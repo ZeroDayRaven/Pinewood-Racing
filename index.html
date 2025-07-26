@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinewood Speed Racer - Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A2C43; /* Dark Navy Blue */
+            --primary-dark: #0F1C2D; /* Darker Navy Blue */
+            --secondary: #C2252B; /* Red */
+            --accent: #D6A84F; /* Mustard Gold */
+            --light: #F2E6D2; /* Cream / Light Beige */
+            --dark: #212121;
+            --gray: #757575;
+            --light-gray: #d0c9b8; /* Cream variant */
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --whiskey: #C07A43; /* Amber / Whiskey Brown */
+            --ice: #AFC5D8; /* Gray-Blue */
+            --racing-red: #e60000;
+            --racing-yellow: #ffcc00;
+            --racing-stripe: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--racing-yellow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--accent), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--racing-yellow);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--racing-yellow);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(194, 37, 43, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Hero Section with Carousel - Racing Style */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .hero-text-container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 5px solid var(--racing-red);
+            border-right: 5px solid var(--racing-yellow);
+        }
+        
+        .hero-text-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .hero-text-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--racing-yellow), #fff, var(--racing-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            font-weight: 900;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--racing-red), transparent);
+            border-radius: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--light);
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn-racing {
+            position: relative;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+        }
+        
+        .btn-racing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+            z-index: -1;
+            opacity: 0.9;
+            transition: all 0.4s;
+        }
+        
+        .btn-racing:hover::before {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .btn-primary-racing {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--racing-yellow);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+        }
+        
+        .btn-primary-racing:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.5);
+            color: white;
+        }
+        
+        .btn-outline-racing {
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--racing-yellow);
+            border: 2px solid var(--racing-yellow);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+        }
+        
+        .btn-outline-racing:hover {
+            background: rgba(230, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
+            color: white;
+        }
+        
+        .hero-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .hero-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .hero-indicator.active {
+            background-color: var(--racing-yellow);
+            transform: scale(1.3);
+            border-color: var(--racing-red);
+        }
+        
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        .hero-nav:hover {
+            background: var(--racing-red);
+            transform: translateY(-50%) scale(1.1);
+            color: var(--racing-yellow);
+        }
+        
+        .hero-prev {
+            left: 20px;
+        }
+        
+        .hero-next {
+            right: 20px;
+        }
+        
+        /* Racing Stripes Effect */
+        .racing-stripes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(230, 0, 0, 0.1) 10px,
+                rgba(230, 0, 0, 0.1) 20px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Gallery Section - Racing Style */
+        .gallery {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--racing-yellow);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--racing-red);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+        }
+        
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .category-select {
+            padding: 12px 25px;
+            border: 2px solid var(--racing-yellow);
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            max-width: 300px;
+            width: 100%;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffcc00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+        }
+        
+        .category-select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.3);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            background: rgba(26, 44, 67, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(230, 0, 0, 0.4);
+            border-color: var(--racing-yellow);
+        }
+        
+        .gallery-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .gallery-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .gallery-price {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--racing-yellow);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .gallery-desc {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+        
+        /* Size selector for clothing items */
+        .size-selector {
+            margin-bottom: 15px;
+        }
+        
+        .size-selector label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--racing-yellow);
+        }
+        
+        .size-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid rgba(214, 168, 79, 0.5);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            font-size: 1rem;
+            color: white;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--racing-red);
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background: var(--racing-yellow);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid rgba(214, 168, 79, 0.5);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
+            color: var(--dark);
+            font-weight: 700;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .add-to-cart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+        }
+        
+        /* Special Ticket Styling */
+        .ticket-item {
+            border: 3px solid var(--racing-yellow);
+            animation: pulseBorder 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ticket-item .gallery-img {
+            height: 300px;
+        }
+        
+        .ticket-item .gallery-price {
+            font-size: 2rem;
+            color: var(--racing-yellow);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+        
+        .ticket-item:hover {
+            transform: scale(1.1) rotate(2deg) translateY(-15px);
+            box-shadow: 0 20px 40px rgba(230, 0, 0, 0.6);
+            z-index: 10;
+            animation: ticketPulseHover 1s infinite;
+        }
+        
+        .ticket-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                transparent 25%, 
+                rgba(255, 204, 0, 0.1) 25%, 
+                rgba(255, 204, 0, 0.1) 50%, 
+                transparent 50%, 
+                transparent 75%, 
+                rgba(230, 0, 0, 0.1) 75%, 
+                rgba(230, 0, 0, 0.1) 100%
+            );
+            background-size: 100px 100px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .ticket-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            z-index: 2;
+        }
+        
+        .ticket-corner::before, .ticket-corner::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-dark);
+            border: 3px solid var(--racing-yellow);
+        }
+        
+        .ticket-corner-tl {
+            top: -15px;
+            left: -15px;
+        }
+        
+        .ticket-corner-tl::before {
+            border-radius: 0 0 100% 0;
+            top: 0;
+            left: 0;
+        }
+        
+        .ticket-corner-tr {
+            top: -15px;
+            right: -15px;
+        }
+        
+        .ticket-corner-tr::before {
+            border-radius: 0 0 0 100%;
+            top: 0;
+            right: 0;
+        }
+        
+        .ticket-corner-bl {
+            bottom: -15px;
+            left: -15px;
+        }
+        
+        .ticket-corner-bl::before {
+            border-radius: 0 100% 0 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .ticket-corner-br {
+            bottom: -15px;
+            right: -15px;
+        }
+        
+        .ticket-corner-br::before {
+            border-radius: 100% 0 0 0;
+            bottom: 0;
+            right: 0;
+        }
+        
+        /* Category tags */
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(26, 44, 67, 0.9);
+            color: var(--racing-yellow);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--racing-yellow);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        /* Filter counter */
+        .filter-counter {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--light);
+            font-style: italic;
+        }
+        
+        @keyframes pulseBorder {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 204, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+            }
+        }
+        
+        @keyframes ticketPulseHover {
+            0% {
+                box-shadow: 0 0 10px var(--racing-yellow), 0 0 20px var(--racing-red);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--racing-yellow), 0 0 40px var(--racing-red);
+            }
+        }
+        
+        /* Payment Section - Racing Style */
+        .payment {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .payment::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .payment-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+        
+        .cart-summary, .payment-form {
+            background: rgba(26, 44, 67, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cart-summary::before, .payment-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .cart-summary h3, .payment-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--racing-yellow);
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(214, 168, 79, 0.3);
+        }
+        
+        .cart-items {
+            margin-bottom: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .cart-items::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb {
+            background: var(--racing-yellow);
+            border-radius: 10px;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(214, 168, 79, 0.2);
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-details h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--racing-yellow);
+            font-size: 1.2rem;
+        }
+        
+        .cart-item-quantity, .cart-item-size {
+            font-size: 0.9rem;
+            color: var(--light);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(214, 168, 79, 0.3);
+            color: var(--racing-yellow);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--racing-yellow);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(214, 168, 79, 0.5);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--racing-yellow);
+            box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* PayFast payment method */
+        .payfast-info {
+            background: rgba(26, 44, 67, 0.3);
+            border-left: 4px solid var(--racing-yellow);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .payfast-info h3 {
+            color: var(--racing-yellow);
+            margin-bottom: 15px;
+        }
+        
+        .payfast-info img {
+            max-width: 220px;
+            margin: 15px auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+        }
+        
+        .payfast-info p {
+            color: var(--light);
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* Submit button */
+        .payment-form button[type="submit"] {
+            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
+            color: var(--dark);
+            font-weight: 700;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.3);
+        }
+        
+        .payment-form button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 0, 0, 0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-item {
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h1>Pinewood Speed Racer</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#gallery">Shop</a></li>
+                    <li><a href="#payment">Checkout</a></li>
+                    <li><a href="#rules">Rules</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('images/Hero1.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero2.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero3.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero4.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero5.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero6.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero7.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero8.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero9.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero10.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero11.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero12.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero13.jpeg')"></div>
+            <div class="hero-slide" style="background-image: url('images/Hero14.jpeg')"></div>
+        </div>
+        <div class="racing-stripes"></div>
+        <div class="hero-indicators">
+            <div class="hero-indicator active"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+        </div>
+        <div class="hero-nav hero-prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="hero-nav hero-next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text-container">
+                <h1>Pinewood Speed Racer</h1>
+                <h2>Velocity in wood form</h2>
+                <p>In collaboration with South Africa's one and only @MNR BRANNAS</p>
+                <div class="hero-btns">
+                    <a href="#gallery" class="btn btn-racing btn-primary-racing">Shop Products</a>
+                    <a href="#rules" class="btn btn-racing btn-outline-racing">View Rules</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Racing Apparel & Gear</h2>
+                <p>Premium merchandise for champions on and off the track</p>
+            </div>
+            
+            <div class="category-filter">
+                <select class="category-select" id="category-select">
+                    <option value="all">All Categories</option>
+                    <option value="ticket">Race Tickets</option>
+                    <option value="tshirts">T-Shirts</option>
+                    <option value="hoodies">Hoodies</option>
+                    <option value="shorts">Shorts</option>
+                    <option value="caps">Caps</option>
+                </select>
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+            
+            <div class="filter-counter" id="filter-counter">
+                Showing all 24 items
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment" id="payment">
+        <div class="racing-stripes"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Checkout & Payment</h2>
+                <p>Complete your purchase securely</p>
+            </div>
+            
+            <div class="payment-container">
+                <div class="cart-summary">
+                    <h3>Your Order</h3>
+                    <div class="cart-items" id="cart-items">
+                        <div class="empty-cart">Your cart is empty</div>
+                    </div>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total">R 0.00</span>
+                    </div>
+                </div>
+                
+                <div class="payment-form">
+                    <h3>Customer Information</h3>
+                    <form id="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" class="form-control" placeholder="Your First Name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" class="form-control" placeholder="Your Last Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id-number">South African ID Number</label>
+                            <input type="text" id="id-number" class="form-control" placeholder="ID Number" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="+27 11 123 4567" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Shipping Address</label>
+                            <textarea id="address" class="form-control" placeholder="Full shipping address" required rows="4"></textarea>
+                        </div>
+                        
+                        <!-- PayFast Payment Information -->
+                        <div class="payfast-info">
+                            <h3>Secure Payment via PayFast</h3>
+                            <img src="https://www.payfast.co.za/assets/logo/payfast_logo_blue.svg" alt="PayFast Secure Payments">
+                            <p>Your payment will be processed securely through PayFast, South Africa's leading payment gateway.</p>
+                        </div>
+                        
+                        <button type="submit" class="btn">Pay with PayFast</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Product data with your local image paths
+        const products = [
+            { 
+                name: "Racing Ticket", 
+                price: 1000, 
+                image: "images/Racing_ticket.png", 
+                category: "ticket" 
+            },
+            { 
+                name: "Black Dotty Shirt", 
+                price: 345, 
+                image: "images/black_dotty_shirt_1_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black Hoody", 
+                price: 800, 
+                image: "images/blackhoody1.jpeg", 
+                category: "hoodies" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 360, 
+                image: "images/black_tshirt_1_R360.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 380, 
+                image: "images/black_tshirt_2_R380.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 325, 
+                image: "images/black_tshirt_3_R325.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 350, 
+                image: "images/black_tshirt_4_R350.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 345, 
+                image: "images/black_tshirt_5_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 350, 
+                image: "images/white_tshirt_6.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Black T-Shirt", 
+                price: 345, 
+                image: "images/black_tshirt_7_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Brown Button Down Shirt", 
+                price: 600, 
+                image: "images/brown_buttondown_shirt_front_R600.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Brown Hoody", 
+                price: 1100, 
+                image: "images/brown_hoody_1_R1100.jpeg", 
+                category: "hoodies" 
+            },
+            { 
+                name: "Brown Shorts", 
+                price: 600, 
+                image: "images/brown_shorts_2_R600.jpeg", 
+                category: "shorts" 
+            },
+            { 
+                name: "Brown T-Shirt", 
+                price: 380, 
+                image: "images/brown_tshirt_1_R380.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "Cap", 
+                price: 250, 
+                image: "images/cap1.jpeg", 
+                category: "caps" 
+            },
+            { 
+                name: "Cap", 
+                price: 250, 
+                image: "images/cap2.jpeg", 
+                category: "caps" 
+            },
+            { 
+                name: "Mix Color T-Shirt", 
+                price: 345, 
+                image: "images/mix_color_tshirt_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White Hoody", 
+                price: 1100, 
+                image: "images/white_hoody_2_R1100.jpeg", 
+                category: "hoodies" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 350, 
+                image: "images/white_tshirt_1_R350.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 325, 
+                image: "images/white_tshirt_2_R325.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 345, 
+                image: "images/white_tshirt_3_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 345, 
+                image: "images/white_tshirt_4_R345.jpeg", 
+                category: "tshirts" 
+            },
+            { 
+                name: "White T-Shirt", 
+                price: 325, 
+                image: "images/white_tshirt_5_R325.jpeg", 
+                category: "tshirts" 
+            }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hero carousel
+            initHeroCarousel();
+            
+            // Generate gallery items
+            generateGalleryItems();
+            
+            // Set up category filter
+            const categorySelect = document.getElementById('category-select');
+            categorySelect.addEventListener('change', filterItems);
+            
+            // Add cart functionality
+            setupCart();
+            
+            // Apply initial filter
+            filterItems();
+        });
+
+        // Generate gallery items from product data
+        function generateGalleryItems() {
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.category = product.category;
+                
+                // Add special class for ticket
+                if (product.name === "Racing Ticket") {
+                    galleryItem.classList.add('ticket-item');
+                    
+                    // Add decorative corners to ticket
+                    galleryItem.innerHTML = `
+                        <div class="ticket-corner ticket-corner-tl"></div>
+                        <div class="ticket-corner ticket-corner-tr"></div>
+                        <div class="ticket-corner ticket-corner-bl"></div>
+                        <div class="ticket-corner ticket-corner-br"></div>
+                    `;
+                }
+                
+                // Add category tag
+                const categoryTag = document.createElement('div');
+                categoryTag.className = 'category-tag';
+                categoryTag.textContent = product.category === 'tshirts' ? 'T-Shirt' : 
+                                         product.category === 'hoodies' ? 'Hoodie' :
+                                         product.category === 'shorts' ? 'Shorts' :
+                                         product.category === 'caps' ? 'Cap' :
+                                         product.category === 'ticket' ? 'Ticket' : product.category;
+                galleryItem.appendChild(categoryTag);
+                
+                // Add product content
+                const itemContent = document.createElement('div');
+                itemContent.innerHTML = `
+                    <div class="gallery-img" style="background-image: url('${product.image}')"></div>
+                    <div class="gallery-info">
+                        <h3>${product.name}</h3>
+                        <div class="gallery-price">R ${product.price.toFixed(2)}</div>
+                        <p class="gallery-desc">High-quality racing apparel for enthusiasts and professionals</p>
+                        ${product.category === 'tshirts' || product.category === 'hoodies' ? `
+                        <div class="size-selector">
+                            <label for="size">Size:</label>
+                            <select class="size-select">
+                                <option value="S">Small (S)</option>
+                                <option value="M" selected>Medium (M)</option>
+                                <option value="L">Large (L)</option>
+                                <option value="XL">Extra Large (XL)</option>
+                            </select>
+                        </div>
+                        ` : ''}
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart" data-id="${products.indexOf(product)}">Add to Cart</button>
+                    </div>
+                `;
+                
+                galleryItem.appendChild(itemContent);
+                galleryGrid.appendChild(galleryItem);
+            });
+        }
+
+        // Filter gallery items by category
+        function filterItems() {
+            const category = document.getElementById('category-select').value;
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            let visibleCount = 0;
+            
+            galleryItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Update counter text
+            const counter = document.getElementById('filter-counter');
+            if (category === 'all') {
+                counter.textContent = `Showing all ${products.length} items`;
+            } else {
+                counter.textContent = `Showing ${visibleCount} ${getCategoryName(category)}`;
+            }
+        }
+        
+        // Get display name for category
+        function getCategoryName(category) {
+            switch(category) {
+                case 'tshirts': return 'T-Shirts';
+                case 'hoodies': return 'Hoodies';
+                case 'shorts': return 'Shorts';
+                case 'caps': return 'Caps';
+                case 'ticket': return 'Race Tickets';
+                default: return category;
+            }
+        }
+
+        // Initialize hero image carousel with 14 slides
+        function initHeroCarousel() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const indicators = document.querySelectorAll('.hero-indicator');
+            const prevBtn = document.querySelector('.hero-prev');
+            const nextBtn = document.querySelector('.hero-next');
+            let currentIndex = 0;
+            let intervalId;
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', () => navigateSlide(-1));
+            nextBtn.addEventListener('click', () => navigateSlide(1));
+            
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    setActiveSlide(index);
+                    resetInterval();
+                });
+            });
+            
+            // Start auto rotation
+            startInterval();
+            
+            // Navigate slides
+            function navigateSlide(direction) {
+                currentIndex = (currentIndex + direction + slides.length) % slides.length;
+                setActiveSlide(currentIndex);
+                resetInterval();
+            }
+            
+            // Set active slide
+            function setActiveSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            // Start rotation interval
+            function startInterval() {
+                intervalId = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    setActiveSlide(currentIndex);
+                }, 5000);
+            }
+            
+            // Reset interval
+            function resetInterval() {
+                clearInterval(intervalId);
+                startInterval();
+            }
+        }
+        
+        // Shopping cart functionality
+        function setupCart() {
+            let cart = [];
+            
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    const productId = parseInt(e.target.dataset.id);
+                    const product = products[productId];
+                    const item = document.querySelector(`.gallery-item:nth-child(${productId + 1})`);
+                    const quantity = parseInt(item.querySelector('.quantity-input').value);
+                    const size = item.querySelector('.size-select') ? item.querySelector('.size-select').value : '';
+                    
+                    // Add to cart
+                    cart.push({
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        quantity: quantity,
+                        size: size
+                    });
+                    
+                    updateCartDisplay();
+                    
+                    // Show success notification
+                    showNotification(`${product.name} added to cart!`);
+                }
+                
+                // Quantity controls
+                if (e.target.classList.contains('quantity-btn')) {
+                    const input = e.target.parentNode.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    
+                    if (e.target.classList.contains('plus')) {
+                        input.value = value + 1;
+                    } else if (e.target.classList.contains('minus') && value > 1) {
+                        input.value = value - 1;
+                    }
+                }
+            });
+            
+            function updateCartDisplay() {
+                const cartItems = document.getElementById('cart-items');
+                const cartTotal = document.getElementById('cart-total');
+                
+                // Clear cart
+                cartItems.innerHTML = '';
+                
+                // Calculate total
+                let total = 0;
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                    cartTotal.textContent = 'R 0.00';
+                    return;
+                }
+                
+                // Add items to cart display
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-img" style="background-image: url('${products[item.id].image}')"></div>
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-price">R ${(item.price * item.quantity).toFixed(2)}</div>
+                            ${item.size ? `<div class="cart-item-size">Size: ${item.size}</div>` : ''}
+                            <div class="cart-item-quantity">Quantity: ${item.quantity}</div>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+                
+                cartTotal.textContent = `R ${total.toFixed(2)}`;
+            }
+            
+            // Show notification
+            function showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.padding = '15px 25px';
+                notification.style.background = 'linear-gradient(45deg, var(--racing-red), var(--racing-yellow))';
+                notification.style.color = 'var(--primary-dark)';
+                notification.style.borderRadius = '8px';
+                notification.style.fontWeight = 'bold';
+                notification.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+                notification.style.zIndex = '10000';
+                notification.style.animation = 'slideIn 0.3s, fadeOut 0.5s 2.5s';
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            // Handle form submission
+            document.getElementById('checkout-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (cart.length === 0) {
+                    showNotification('Please add items to your cart before checking out.');
+                    return;
+                }
+                
+                showNotification('Thank you for your purchase! Your order has been processed.');
+                cart = [];
+                updateCartDisplay();
+            });
+        }
+    </script>
+</body>
+</html>
