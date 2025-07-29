@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinewood Speed Racer - Shop</title>
+    <title>Pinewood Speed Racer - Tickets & Merchandise</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <style>
         :root {
             --primary: #1A2C43; /* Dark Navy Blue */
@@ -88,113 +89,98 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Infinity Symbol Animation */
-        .logo-icon {
+        /* Animated text shine effect */
+        .logo h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            animation: textShine 10s linear infinite;
+        }
+        
+        @keyframes textShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Newcart Container Styles */
+        .logo-container {
+            position: relative;
             width: 50px;
             height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
             position: relative;
-            overflow: visible;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 2;
         }
         
-        .infinity-container {
-            position: relative;
-            width: 40px;
-            height: 20px;
-        }
-        
-        .infinity-path {
+        .logo-container::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
+            background: radial-gradient(circle at center, transparent 40%, rgba(255, 204, 0, 0.3) 100%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: glowPulse 2s infinite alternate;
         }
         
-        .infinity-red {
-            stroke: var(--racing-red);
-            stroke-width: 3;
-            fill: none;
-            filter: url(#glow-red);
-            animation: draw 3s linear infinite;
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(255, 204, 0, 0.3); }
+            100% { box-shadow: 0 0 20px rgba(255, 204, 0, 0.7); }
         }
         
-        .infinity-blue {
-            stroke: var(--racing-blue);
-            stroke-width: 3;
-            fill: none;
-            filter: url(#glow-blue);
-            animation: draw 3s linear infinite reverse;
-        }
-        
-        .trail-red {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            stroke: var(--racing-red);
-            stroke-width: 3;
-            fill: none;
-            opacity: 0.3;
-            filter: blur(2px);
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 3s linear infinite;
-        }
-        
-        .trail-blue {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            stroke: var(--racing-blue);
-            stroke-width: 3;
-            fill: none;
-            opacity: 0.3;
-            filter: blur(2px);
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 3s linear infinite reverse;
-        }
-        
-        .spark {
+        .orb {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(1px);
-            opacity: 0;
-            box-shadow: 0 0 10px 3px white;
-            animation: spark 3s infinite;
+            margin: -3px;
+            z-index: 2;
         }
-        
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
+
+        .orb.red {
+            background: var(--racing-red);
+            animation: orbit-red 5s linear infinite;
         }
-        
-        @keyframes spark {
-            0%, 100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.5);
-            }
+
+        .orb.blue {
+            background: var(--racing-blue);
+            animation: orbit-blue 5s linear infinite;
+        }
+
+        @keyframes orbit-red {
+            0%   { transform: rotate(0deg)   translateX(22.5px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(22.5px) rotate(-360deg); }
+        }
+
+        @keyframes orbit-blue {
+            0%   { transform: rotate(0deg)   translateX(-22.5px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(-22.5px) rotate(360deg); }
         }
         
         /* Mobile menu button */
@@ -1027,6 +1013,7 @@
             gap: 15px;
             padding: 15px 0;
             border-bottom: 1px solid rgba(214, 168, 79, 0.2);
+            position: relative;
         }
         
         .cart-item-img {
@@ -1057,6 +1044,25 @@
         .cart-item-quantity, .cart-item-size {
             font-size: 0.9rem;
             color: var(--light);
+        }
+        
+        /* Remove item button */
+        .remove-item {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: var(--light-gray);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 5px;
+        }
+        
+        .remove-item:hover {
+            color: var(--racing-red);
+            transform: scale(1.2);
         }
         
         .cart-total {
@@ -1195,6 +1201,301 @@
             }
         }
         
+        /* New styles for QR tickets section */
+        .tickets-section {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            padding: 60px 0;
+            position: relative;
+            display: none;
+        }
+        
+        .tickets-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .ticket-container {
+            background: rgba(26, 44, 67, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 3px solid var(--racing-yellow);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .ticket-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 204, 0, 0.1) 10px,
+                rgba(255, 204, 0, 0.1) 20px
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ticket-header h3 {
+            font-size: 2rem;
+            color: var(--racing-yellow);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .ticket-header p {
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+        
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .ticket-card {
+            background: rgba(15, 28, 45, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--racing-red);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(230, 0, 0, 0.5);
+        }
+        
+        .ticket-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--racing-red);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .ticket-qr {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 15px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ticket-info {
+            color: var(--light);
+            text-align: left;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(214, 168, 79, 0.3);
+        }
+        
+        .ticket-info p {
+            margin-bottom: 8px;
+        }
+        
+        .ticket-info strong {
+            color: var(--racing-yellow);
+            font-weight: 600;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
+            color: var(--dark);
+            font-weight: 700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+        }
+        
+        .back-to-shop {
+            background: transparent;
+            color: var(--racing-yellow);
+            border: 2px solid var(--racing-yellow);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 30px auto 0;
+            max-width: 250px;
+            text-align: center;
+        }
+        
+        .back-to-shop:hover {
+            background: var(--racing-yellow);
+            color: var(--primary-dark);
+        }
+        
+        .ticket-validation {
+            background: rgba(15, 28, 45, 0.9);
+            border: 2px solid var(--racing-yellow);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .ticket-validation h4 {
+            color: var(--racing-yellow);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .ticket-validation p {
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+        
+        .ticket-validation strong {
+            color: var(--racing-red);
+            font-size: 1.2rem;
+        }
+        
+        .ticket-corner {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            z-index: 2;
+        }
+        
+        .ticket-corner::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-dark);
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        .ticket-corner-tl {
+            top: -12px;
+            left: -12px;
+            border-radius: 0 0 100% 0;
+        }
+        
+        .ticket-corner-tr {
+            top: -12px;
+            right: -12px;
+            border-radius: 0 0 0 100%;
+        }
+        
+        .ticket-corner-bl {
+            bottom: -12px;
+            left: -12px;
+            border-radius: 0 100% 0 0;
+        }
+        
+        .ticket-corner-br {
+            bottom: -12px;
+            right: -12px;
+            border-radius: 100% 0 0 0;
+        }
+        
+        /* Add to existing animation */
+        @keyframes ticketPulseHover {
+            0% {
+                box-shadow: 0 0 10px var(--racing-yellow), 0 0 20px var(--racing-red);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--racing-yellow), 0 0 40px var(--racing-red);
+            }
+        }
+        
+        /* New animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .ticket-card {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .ticket-card:nth-child(1) { animation-delay: 0.1s; }
+        .ticket-card:nth-child(2) { animation-delay: 0.2s; }
+        .ticket-card:nth-child(3) { animation-delay: 0.3s; }
+        .ticket-card:nth-child(4) { animation-delay: 0.4s; }
+        .ticket-card:nth-child(5) { animation-delay: 0.5s; }
+        .ticket-card:nth-child(6) { animation-delay: 0.6s; }
+        .ticket-card:nth-child(7) { animation-delay: 0.7s; }
+        .ticket-card:nth-child(8) { animation-delay: 0.8s; }
+        .ticket-card:nth-child(9) { animation-delay: 0.9s; }
+        .ticket-card:nth-child(10) { animation-delay: 1.0s; }
+        
+        /* Limit reached indicator */
+        .limit-reached {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--racing-red);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            display: none;
+        }
+        
         /* Responsive Design */
         @media (max-width: 1100px) {
             .payment-container {
@@ -1314,7 +1615,7 @@
                 font-size: 1.5rem;
             }
             
-            .logo-icon {
+            .logo-container {
                 width: 40px;
                 height: 40px;
             }
@@ -1370,45 +1671,15 @@
     </style>
 </head>
 <body>
-    <!-- SVG Filters for Glow Effects -->
-    <svg width="0" height="0" style="position:absolute;">
-        <defs>
-            <filter id="glow-red">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-            <filter id="glow-blue">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
-    </svg>
-    
-    <!-- Header -->
+    <!-- Header with new logo -->
     <header>
         <div class="container header-content">
             <div class="logo">
-                <div class="logo-icon">
-                    <!-- Animated Infinity Symbol -->
-                    <div class="infinity-container">
-                        <svg class="infinity-path" viewBox="0 0 100 50">
-                            <path class="infinity-red" d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                            <path class="infinity-blue" d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <svg class="trail-red" viewBox="0 0 100 50">
-                            <path d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <svg class="trail-blue" viewBox="0 0 100 50">
-                            <path d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <div class="spark"></div>
-                    </div>
+                <div class="logo-container">
+                    <div class="logo-circle"></div>
+                    <div class="orb red"></div>
+                    <div class="orb blue"></div>
+                    <div class="shine"></div>
                 </div>
                 <h1>Pinewood Speed Racer</h1>
             </div>
@@ -1422,7 +1693,7 @@
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="#gallery">Shop</a></li>
                     <li><a href="#payment">Checkout</a></li>
-                    <li><a href="#rules">Rules</a></li>
+                    <li><a href="#tickets">Tickets</a></li>
                 </ul>
             </nav>
         </div>
@@ -1431,11 +1702,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slides">
-            <!-- Hero images will be populated by JavaScript -->
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
         </div>
         <div class="racing-stripes"></div>
         <div class="hero-indicators">
-            <!-- Indicators will be populated by JavaScript -->
+            <div class="hero-indicator active"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
+            <div class="hero-indicator"></div>
         </div>
         <div class="hero-nav hero-prev">
             <i class="fas fa-chevron-left"></i>
@@ -1450,7 +1727,7 @@
                 <p>In collaboration with South Africa's one and only @MNR BRANNAS</p>
                 <div class="hero-btns">
                     <a href="#gallery" class="btn btn-racing btn-primary-racing">Shop Products</a>
-                    <a href="#rules" class="btn btn-racing btn-outline-racing">View Rules</a>
+                    <a href="#tickets" class="btn btn-racing btn-outline-racing">View Tickets</a>
                 </div>
             </div>
         </div>
@@ -1504,6 +1781,10 @@
                         <span>Total:</span>
                         <span id="cart-total">R 0.00</span>
                     </div>
+                    <div id="ticket-validation" style="display: none; margin-top: 15px; padding: 10px; background: rgba(194, 37, 43, 0.1); border-radius: 8px; border-left: 3px solid var(--racing-red);">
+                        <p style="color: var(--light);"><i class="fas fa-info-circle"></i> Maximum of 10 tickets per ID</p>
+                        <p id="ticket-count" style="color: var(--racing-yellow); font-weight: 500; margin-top: 5px;"></p>
+                    </div>
                 </div>
                 
                 <div class="payment-form">
@@ -1523,7 +1804,8 @@
                         
                         <div class="form-group">
                             <label for="id-number">South African ID Number</label>
-                            <input type="text" id="id-number" class="form-control" placeholder="ID Number" required>
+                            <input type="text" id="id-number" class="form-control" placeholder="ID Number" required minlength="13" maxlength="13">
+                            <small style="color: var(--light-gray); display: block; margin-top: 5px;">Must be 13 digits</small>
                         </div>
                         
                         <div class="form-row">
@@ -1556,6 +1838,44 @@
             </div>
         </div>
     </section>
+    
+    <!-- Tickets Section -->
+    <section class="tickets-section" id="tickets">
+        <div class="racing-stripes"></div>
+        <div class="container">
+            <div class="ticket-container">
+                <div class="ticket-corner ticket-corner-tl"></div>
+                <div class="ticket-corner ticket-corner-tr"></div>
+                <div class="ticket-corner ticket-corner-bl"></div>
+                <div class="ticket-corner ticket-corner-br"></div>
+                
+                <div class="ticket-header">
+                    <h3>Your Race Tickets</h3>
+                    <p>Present these tickets at the event for entry</p>
+                </div>
+                
+                <div class="ticket-validation">
+                    <h4>Ticket Validation</h4>
+                    <p>Each ticket has a unique QR code containing:</p>
+                    <p><strong>Ticket Number • ID Number • Purchase Date</strong></p>
+                    <p>Maximum of 10 tickets per ID enforced</p>
+                </div>
+                
+                <div class="ticket-grid" id="ticket-grid">
+                    <!-- Tickets will be generated here -->
+                </div>
+                
+                <button class="back-to-shop" id="back-to-shop">
+                    <i class="fas fa-arrow-left"></i> Back to Shop
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Limit Reached Indicator -->
+    <div class="limit-reached" id="limit-reached">
+        <i class="fas fa-exclamation-triangle"></i> Maximum of 10 tickets reached per ID
+    </div>
 
     <script>
         // Product data with your local image paths
@@ -1563,159 +1883,39 @@
             { 
                 name: "Racing Ticket", 
                 price: 1000, 
-                image: "images/Racing_ticket.png", 
-                category: "ticket" 
+                image: "https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", 
+                category: "ticket",
+                description: "Entry ticket to the Pinewood Speed Racer event"
             },
             { 
                 name: "Black Dotty Shirt", 
                 price: 345, 
-                image: "images/black_dotty_shirt_1_R345.jpeg", 
-                category: "tshirts" 
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80", 
+                category: "tshirts",
+                description: "Comfortable cotton shirt with racing-inspired dots"
             },
             { 
                 name: "Black Hoody", 
                 price: 800, 
-                image: "images/blackhoody1.jpeg", 
-                category: "hoodies" 
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1972&q=80", 
+                category: "hoodies",
+                description: "Warm hoody perfect for cool racing nights"
             },
             { 
                 name: "Black T-Shirt", 
                 price: 360, 
-                image: "images/black_tshirt_1_R360.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Black T-Shirt", 
-                price: 380, 
-                image: "images/black_tshirt_2_R380.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Black T-Shirt", 
-                price: 325, 
-                image: "images/black_tshirt_3_R325.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Black T-Shirt", 
-                price: 350, 
-                image: "images/black_tshirt_4_R350.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Black T-Shirt", 
-                price: 345, 
-                image: "images/black_tshirt_5_R345.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 350, 
-                image: "images/white_tshirt_6.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Black T-Shirt", 
-                price: 345, 
-                image: "images/black_tshirt_7_R345.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Brown Button Down Shirt", 
-                price: 600, 
-                image: "images/brown_buttondown_shirt_front_R600.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Brown Hoody", 
-                price: 1100, 
-                image: "images/brown_hoody_1_R1100.jpeg", 
-                category: "hoodies" 
-            },
-            { 
-                name: "Brown Shorts", 
-                price: 600, 
-                image: "images/brown_shorts_2_R600.jpeg", 
-                category: "shorts" 
-            },
-            { 
-                name: "Brown T-Shirt", 
-                price: 380, 
-                image: "images/brown_tshirt_1_R380.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "Cap", 
-                price: 250, 
-                image: "images/cap1.jpeg", 
-                category: "caps" 
-            },
-            { 
-                name: "Cap", 
-                price: 250, 
-                image: "images/cap2.jpeg", 
-                category: "caps" 
-            },
-            { 
-                name: "Mix Color T-Shirt", 
-                price: 345, 
-                image: "images/mix_color_tshirt_R345.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White Hoody", 
-                price: 1100, 
-                image: "images/white_hoody_2_R1100.jpeg", 
-                category: "hoodies" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 350, 
-                image: "images/white_tshirt_1_R350.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 325, 
-                image: "images/white_tshirt_2_R325.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 345, 
-                image: "images/white_tshirt_3_R345.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 345, 
-                image: "images/white_tshirt_4_R345.jpeg", 
-                category: "tshirts" 
-            },
-            { 
-                name: "White T-Shirt", 
-                price: 325, 
-                image: "images/white_tshirt_5_R325.jpeg", 
-                category: "tshirts" 
+                image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", 
+                category: "tshirts",
+                description: "Classic black t-shirt with minimal design"
             }
         ];
         
         // Hero image paths
         const heroImages = [
-            "images/Hero1.jpeg",
-            "images/Hero2.jpeg",
-            "images/Hero3.jpeg",
-            "images/Hero4.jpeg",
-            "images/Hero5.jpeg",
-            "images/Hero6.jpeg",
-            "images/Hero7.jpeg",
-            "images/Hero8.jpeg",
-            "images/Hero9.jpeg",
-            "images/Hero10.jpeg",
-            "images/Hero11.jpeg",
-            "images/Hero12.jpeg",
-            "images/Hero13.jpeg",
-            "images/Hero14.jpeg"
+            "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80",
+            "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+            "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
         ];
 
         // Initialize the page
@@ -1746,6 +1946,13 @@
                 if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                     navMenu.classList.remove('active');
                 }
+            });
+            
+            // Back to shop button
+            document.getElementById('back-to-shop').addEventListener('click', function() {
+                document.getElementById('tickets').style.display = 'none';
+                document.getElementById('payment').style.display = 'block';
+                window.location.hash = '#';
             });
             
             // Apply initial filter
@@ -1792,7 +1999,7 @@
                     <div class="gallery-info">
                         <h3>${product.name}</h3>
                         <div class="gallery-price">R ${product.price.toFixed(2)}</div>
-                        <p class="gallery-desc">High-quality racing apparel for enthusiasts and professionals</p>
+                        <p class="gallery-desc">${product.description}</p>
                         ${product.category === 'tshirts' || product.category === 'hoodies' ? `
                         <div class="size-selector">
                             <label for="size">Size:</label>
@@ -1929,9 +2136,40 @@
             }
         }
         
-        // Shopping cart functionality
+        // Shopping cart functionality with ticket validation
         function setupCart() {
             let cart = [];
+            let ticketCountMap = {}; // Track ticket counts per ID
+            
+            // Load existing ticket counts from localStorage
+            function loadTicketCounts() {
+                const counts = localStorage.getItem('ticketCounts');
+                if (counts) {
+                    ticketCountMap = JSON.parse(counts);
+                }
+            }
+            
+            // Save ticket counts to localStorage
+            function saveTicketCounts() {
+                localStorage.setItem('ticketCounts', JSON.stringify(ticketCountMap));
+            }
+            
+            // Get ticket count for an ID
+            function getTicketCount(idNumber) {
+                return ticketCountMap[idNumber] || 0;
+            }
+            
+            // Set ticket count for an ID
+            function setTicketCount(idNumber, count) {
+                ticketCountMap[idNumber] = count;
+                saveTicketCounts();
+            }
+            
+            // Initialize
+            loadTicketCounts();
+            
+            // Listen for changes in ID input to update cart display
+            document.getElementById('id-number').addEventListener('input', updateCartDisplay);
             
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('add-to-cart')) {
@@ -1940,6 +2178,30 @@
                     const item = document.querySelector(`.gallery-item:nth-child(${productId + 1})`);
                     const quantity = parseInt(item.querySelector('.quantity-input').value);
                     const size = item.querySelector('.size-select') ? item.querySelector('.size-select').value : '';
+                    
+                    // For tickets, validate quantity
+                    if (product.name === "Racing Ticket") {
+                        // Get the ID from the form (if available)
+                        const idInput = document.getElementById('id-number');
+                        const idNumber = idInput ? idInput.value.trim() : '';
+                        
+                        if (idNumber && idNumber.length === 13) {
+                            const currentCount = getTicketCount(idNumber);
+                            const newCount = currentCount + quantity;
+                            
+                            if (newCount > 10) {
+                                showNotification(`Maximum 10 tickets per ID! You already have ${currentCount} tickets.`);
+                                
+                                // Show limit reached indicator
+                                const limitIndicator = document.getElementById('limit-reached');
+                                limitIndicator.style.display = 'block';
+                                setTimeout(() => {
+                                    limitIndicator.style.display = 'none';
+                                }, 3000);
+                                return;
+                            }
+                        }
+                    }
                     
                     // Add to cart
                     cart.push({
@@ -1967,26 +2229,46 @@
                         input.value = value - 1;
                     }
                 }
+                
+                // Remove item from cart
+                if (e.target.classList.contains('remove-item')) {
+                    const index = parseInt(e.target.dataset.index);
+                    removeItemFromCart(index);
+                }
             });
             
+            // Remove item from cart
+            function removeItemFromCart(index) {
+                if (index >= 0 && index < cart.length) {
+                    const removedItem = cart.splice(index, 1)[0];
+                    updateCartDisplay();
+                    showNotification(`${removedItem.name} removed from cart!`);
+                }
+            }
+            
+            // Update cart display with ticket validation
             function updateCartDisplay() {
                 const cartItems = document.getElementById('cart-items');
                 const cartTotal = document.getElementById('cart-total');
+                const validationDiv = document.getElementById('ticket-validation');
+                const ticketCountElement = document.getElementById('ticket-count');
                 
                 // Clear cart
                 cartItems.innerHTML = '';
                 
                 // Calculate total
                 let total = 0;
+                let ticketCount = 0;
                 
                 if (cart.length === 0) {
                     cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
                     cartTotal.textContent = 'R 0.00';
+                    validationDiv.style.display = 'none';
                     return;
                 }
                 
                 // Add items to cart display
-                cart.forEach(item => {
+                cart.forEach((item, index) => {
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
@@ -1997,13 +2279,42 @@
                             ${item.size ? `<div class="cart-item-size">Size: ${item.size}</div>` : ''}
                             <div class="cart-item-quantity">Quantity: ${item.quantity}</div>
                         </div>
+                        <button class="remove-item" data-index="${index}">
+                            <i class="fas fa-times"></i>
+                        </button>
                     `;
                     
                     cartItems.appendChild(cartItem);
                     total += item.price * item.quantity;
+                    
+                    // Count tickets
+                    if (item.name === "Racing Ticket") {
+                        ticketCount += item.quantity;
+                    }
                 });
                 
                 cartTotal.textContent = `R ${total.toFixed(2)}`;
+                
+                // Show ticket validation info if tickets are in cart
+                if (ticketCount > 0) {
+                    const idInput = document.getElementById('id-number');
+                    const idNumber = idInput ? idInput.value.trim() : '';
+                    
+                    if (idNumber && idNumber.length === 13) {
+                        const currentCount = getTicketCount(idNumber);
+                        ticketCountElement.textContent = `ID ${idNumber} has ${currentCount} tickets. Adding ${ticketCount} more.`;
+                        validationDiv.style.display = 'block';
+                        
+                        if (currentCount + ticketCount > 10) {
+                            ticketCountElement.innerHTML = `<span style="color: var(--racing-red);">Exceeds 10 ticket limit! (${currentCount + ticketCount})</span>`;
+                        }
+                    } else {
+                        ticketCountElement.textContent = "Enter your ID to check ticket count";
+                        validationDiv.style.display = 'block';
+                    }
+                } else {
+                    validationDiv.style.display = 'none';
+                }
             }
             
             // Show notification
@@ -2019,7 +2330,7 @@
                 }, 3000);
             }
             
-            // Handle form submission
+            // Handle form submission with QR code generation
             document.getElementById('checkout-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 if (cart.length === 0) {
@@ -2027,10 +2338,117 @@
                     return;
                 }
                 
-                showNotification('Thank you for your purchase! Your order has been processed.');
+                // Get form values
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const idNumber = document.getElementById('id-number').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                
+                // Validate ID number
+                if (idNumber.length !== 13 || isNaN(idNumber)) {
+                    showNotification('Please enter a valid 13-digit South African ID number');
+                    return;
+                }
+                
+                // Process tickets
+                const tickets = [];
+                let currentTicketCount = getTicketCount(idNumber);
+                let ticketQuantity = 0;
+                
+                // Find ticket items in cart
+                cart.forEach(item => {
+                    if (item.name === "Racing Ticket") {
+                        ticketQuantity += item.quantity;
+                    }
+                });
+                
+                // Check if we can add all tickets
+                if (currentTicketCount + ticketQuantity > 10) {
+                    showNotification(`Cannot add ${ticketQuantity} tickets! You can only purchase ${10 - currentTicketCount} more tickets.`);
+                    return;
+                }
+                
+                // Create tickets
+                cart.forEach(item => {
+                    if (item.name === "Racing Ticket") {
+                        for (let i = 0; i < item.quantity; i++) {
+                            currentTicketCount++;
+                            
+                            tickets.push({
+                                ticketNumber: currentTicketCount,
+                                purchaseDate: new Date().toLocaleDateString('en-ZA'),
+                                idNumber: idNumber,
+                                name: `${firstName} ${lastName}`,
+                                price: item.price
+                            });
+                        }
+                    }
+                });
+                
+                // Update ticket count
+                setTicketCount(idNumber, currentTicketCount);
+                
+                // Generate QR codes for tickets
+                generateTicketQRs(tickets);
+                
+                // Show ticket section
+                document.getElementById('payment').style.display = 'none';
+                document.getElementById('tickets').style.display = 'block';
+                window.location.hash = '#tickets';
+                
+                // Clear cart
                 cart = [];
                 updateCartDisplay();
             });
+            
+            // Generate QR codes for tickets
+            function generateTicketQRs(tickets) {
+                const ticketGrid = document.getElementById('ticket-grid');
+                ticketGrid.innerHTML = '';
+                
+                if (tickets.length === 0) {
+                    ticketGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--light);">No tickets in this purchase</p>';
+                    return;
+                }
+                
+                tickets.forEach(ticket => {
+                    const ticketCard = document.createElement('div');
+                    ticketCard.className = 'ticket-card';
+                    
+                    const ticketId = `ticket-${ticket.idNumber}-${ticket.ticketNumber}`;
+                    const qrContent = `Pinewood Speed Racer\nTicket #: ${ticket.ticketNumber}\nID: ${ticket.idNumber}\nName: ${ticket.name}\nDate: ${ticket.purchaseDate}`;
+                    
+                    ticketCard.innerHTML = `
+                        <div class="ticket-number">${ticket.ticketNumber}</div>
+                        <div class="ticket-qr" id="qr-${ticketId}"></div>
+                        <div class="ticket-info">
+                            <p><strong>Ticket #:</strong> ${ticket.ticketNumber}</p>
+                            <p><strong>ID:</strong> ${ticket.idNumber}</p>
+                            <p><strong>Name:</strong> ${ticket.name}</p>
+                            <p><strong>Date:</strong> ${ticket.purchaseDate}</p>
+                        </div>
+                        <button class="download-btn" data-ticket="${ticketId}">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    `;
+                    
+                    ticketGrid.appendChild(ticketCard);
+                    
+                    // Generate QR code
+                    setTimeout(() => {
+                        new QRCode(document.getElementById(`qr-${ticketId}`), {
+                            text: qrContent,
+                            width: 160,
+                            height: 160,
+                            colorDark: "#1A2C43",
+                            colorLight: "#ffffff",
+                            correctLevel: QRCode.CorrectLevel.H
+                        });
+                    }, 100);
+                });
+            }
         }
     </script>
 </body>
