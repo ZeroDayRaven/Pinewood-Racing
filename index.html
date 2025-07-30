@@ -82,119 +82,82 @@
             gap: 15px;
         }
         
+        /* New Logo Animation Container */
+        .logo-container {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            animation: shine 15s infinite linear;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .red-dot {
+            background-color: var(--racing-red);
+            animation: spin-red 2s linear infinite;
+            box-shadow: 0 0 8px rgba(230, 0, 0, 0.8);
+        }
+        
+        .blue-dot {
+            background-color: var(--racing-blue);
+            animation: spin-blue 2s linear infinite reverse;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+        }
+        
+        @keyframes spin-red {
+            0% { 
+                transform: translate(-50%, -50%) rotate(0deg) translate(23px) rotate(0deg);
+            }
+            100% { 
+                transform: translate(-50%, -50%) rotate(360deg) translate(23px) rotate(-360deg);
+            }
+        }
+        
+        @keyframes spin-blue {
+            0% { 
+                transform: translate(-50%, -50%) rotate(0deg) translate(23px) rotate(0deg);
+            }
+            100% { 
+                transform: translate(-50%, -50%) rotate(360deg) translate(23px) rotate(-360deg);
+            }
+        }
+        
+        @keyframes shine {
+            0%, 85% {
+                filter: none;
+            }
+            90% {
+                filter: drop-shadow(0 0 5px gold) brightness(1.1);
+            }
+            95% {
+                filter: drop-shadow(0 0 8px gold) brightness(1.2);
+            }
+            100% {
+                filter: none;
+            }
+        }
+        
         .logo h1 {
             font-size: 1.8rem;
             background: linear-gradient(to right, var(--accent), #fff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-        
-        /* Infinity Symbol Animation */
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            position: relative;
-            overflow: visible;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .infinity-container {
-            position: relative;
-            width: 40px;
-            height: 20px;
-        }
-        
-        .infinity-path {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-        }
-        
-        .infinity-red {
-            stroke: var(--racing-red);
-            stroke-width: 3;
-            fill: none;
-            filter: url(#glow-red);
-            animation: draw 3s linear infinite;
-        }
-        
-        .infinity-blue {
-            stroke: var(--racing-blue);
-            stroke-width: 3;
-            fill: none;
-            filter: url(#glow-blue);
-            animation: draw 3s linear infinite reverse;
-        }
-        
-        .trail-red {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            stroke: var(--racing-red);
-            stroke-width: 3;
-            fill: none;
-            opacity: 0.3;
-            filter: blur(2px);
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 3s linear infinite;
-        }
-        
-        .trail-blue {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            stroke: var(--racing-blue);
-            stroke-width: 3;
-            fill: none;
-            opacity: 0.3;
-            filter: blur(2px);
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 3s linear infinite reverse;
-        }
-        
-        .spark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(1px);
-            opacity: 0;
-            box-shadow: 0 0 10px 3px white;
-            animation: spark 3s infinite;
-        }
-        
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-        
-        @keyframes spark {
-            0%, 100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.5);
-            }
         }
         
         /* Mobile menu button */
@@ -1027,6 +990,7 @@
             gap: 15px;
             padding: 15px 0;
             border-bottom: 1px solid rgba(214, 168, 79, 0.2);
+            position: relative;
         }
         
         .cart-item-img {
@@ -1057,6 +1021,30 @@
         .cart-item-quantity, .cart-item-size {
             font-size: 0.9rem;
             color: var(--light);
+        }
+        
+        /* Remove button styling */
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 107, 107, 0.2);
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .remove-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+            color: white;
+            transform: scale(1.1);
         }
         
         .cart-total {
@@ -1314,11 +1302,6 @@
                 font-size: 1.5rem;
             }
             
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-            
             .section-title h2 {
                 font-size: 1.6rem;
             }
@@ -1370,45 +1353,15 @@
     </style>
 </head>
 <body>
-    <!-- SVG Filters for Glow Effects -->
-    <svg width="0" height="0" style="position:absolute;">
-        <defs>
-            <filter id="glow-red">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-            <filter id="glow-blue">
-                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
-    </svg>
-    
     <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">
-                <div class="logo-icon">
-                    <!-- Animated Infinity Symbol -->
-                    <div class="infinity-container">
-                        <svg class="infinity-path" viewBox="0 0 100 50">
-                            <path class="infinity-red" d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                            <path class="infinity-blue" d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <svg class="trail-red" viewBox="0 0 100 50">
-                            <path d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <svg class="trail-blue" viewBox="0 0 100 50">
-                            <path d="M20,25 C30,5 70,5 80,25 C90,45 30,45 20,25 Z" />
-                        </svg>
-                        <div class="spark"></div>
-                    </div>
+                <!-- New Logo Container with Animation -->
+                <div class="logo-container">
+                    <img src="images/Logo.png" alt="Pinewood Speed Racer Logo" class="logo-img">
+                    <div class="dot red-dot"></div>
+                    <div class="dot blue-dot"></div>
                 </div>
                 <h1>Pinewood Speed Racer</h1>
             </div>
@@ -1969,6 +1922,16 @@
                 }
             });
             
+            // Remove item from cart
+            function removeFromCart(index) {
+                if (index >= 0 && index < cart.length) {
+                    const removedItem = cart[index];
+                    cart.splice(index, 1);
+                    updateCartDisplay();
+                    showNotification(`${removedItem.name} removed from cart`);
+                }
+            }
+            
             function updateCartDisplay() {
                 const cartItems = document.getElementById('cart-items');
                 const cartTotal = document.getElementById('cart-total');
@@ -1986,7 +1949,7 @@
                 }
                 
                 // Add items to cart display
-                cart.forEach(item => {
+                cart.forEach((item, index) => {
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
@@ -1999,6 +1962,14 @@
                         </div>
                     `;
                     
+                    // Create remove button
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-btn';
+                    removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    removeBtn.title = 'Remove item';
+                    removeBtn.addEventListener('click', () => removeFromCart(index));
+                    
+                    cartItem.appendChild(removeBtn);
                     cartItems.appendChild(cartItem);
                     total += item.price * item.quantity;
                 });
