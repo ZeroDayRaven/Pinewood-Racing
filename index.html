@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pinewood Speed Racer - Shop</title>
+    <title>Pinewood Speed Racer - Premium Racing Apparel & Kits</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1A2C43; /* Dark Navy Blue */
-            --primary-dark: #0F1C2D; /* Darker Navy Blue */
-            --secondary: #C2252B; /* Red */
-            --accent: #D6A84F; /* Mustard Gold */
-            --light: #F2E6D2; /* Cream / Light Beige */
+            --primary: #1A2C43;
+            --primary-dark: #0F1C2D;
+            --secondary: #C2252B;
+            --accent: #D6A84F;
+            --light: #F2E6D2;
             --dark: #212121;
             --gray: #757575;
-            --light-gray: #d0c9b8; /* Cream variant */
+            --light-gray: #d0c9b8;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
-            --whiskey: #C07A43; /* Amber / Whiskey Brown */
-            --ice: #AFC5D8; /* Gray-Blue */
+            --whiskey: #C07A43;
+            --ice: #AFC5D8;
             --racing-red: #e60000;
             --racing-blue: #007bff;
             --racing-yellow: #ffcc00;
@@ -82,7 +82,7 @@
             gap: 15px;
         }
         
-        /* New Logo Animation Container */
+        /* Logo Animation Container */
         .logo-container {
             position: relative;
             width: 50px;
@@ -95,6 +95,7 @@
             border-radius: 50%;
             object-fit: contain;
             animation: shine 15s infinite linear;
+            background: linear-gradient(45deg, var(--racing-yellow), var(--racing-red));
         }
         
         .dot {
@@ -754,32 +755,33 @@
             box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
         }
         
-        /* Special Ticket Styling */
-        .ticket-item {
+        /* Special Kit Styling */
+        .kit-item {
             border: 3px solid var(--racing-yellow);
             animation: pulseBorder 2s infinite;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(45deg, rgba(26, 44, 67, 0.9), rgba(10, 20, 35, 0.9));
         }
         
-        .ticket-item .gallery-img {
+        .kit-item .gallery-img {
             height: 250px;
         }
         
-        .ticket-item .gallery-price {
+        .kit-item .gallery-price {
             font-size: 1.8rem;
             color: var(--racing-yellow);
             text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
         }
         
-        .ticket-item:hover {
-            transform: scale(1.1) rotate(2deg) translateY(-15px);
+        .kit-item:hover {
+            transform: scale(1.05) rotate(1deg) translateY(-15px);
             box-shadow: 0 20px 40px rgba(230, 0, 0, 0.6);
             z-index: 10;
-            animation: ticketPulseHover 1s infinite;
+            animation: kitPulseHover 1s infinite;
         }
         
-        .ticket-item::before {
+        .kit-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -801,14 +803,14 @@
             pointer-events: none;
         }
         
-        .ticket-corner {
+        .kit-corner {
             position: absolute;
             width: 30px;
             height: 30px;
             z-index: 2;
         }
         
-        .ticket-corner::before, .ticket-corner::after {
+        .kit-corner::before, .kit-corner::after {
             content: '';
             position: absolute;
             width: 20px;
@@ -817,45 +819,45 @@
             border: 3px solid var(--racing-yellow);
         }
         
-        .ticket-corner-tl {
+        .kit-corner-tl {
             top: -15px;
             left: -15px;
         }
         
-        .ticket-corner-tl::before {
+        .kit-corner-tl::before {
             border-radius: 0 0 100% 0;
             top: 0;
             left: 0;
         }
         
-        .ticket-corner-tr {
+        .kit-corner-tr {
             top: -15px;
             right: -15px;
         }
         
-        .ticket-corner-tr::before {
+        .kit-corner-tr::before {
             border-radius: 0 0 0 100%;
             top: 0;
             right: 0;
         }
         
-        .ticket-corner-bl {
+        .kit-corner-bl {
             bottom: -15px;
             left: -15px;
         }
         
-        .ticket-corner-bl::before {
+        .kit-corner-bl::before {
             border-radius: 0 100% 0 0;
             bottom: 0;
             left: 0;
         }
         
-        .ticket-corner-br {
+        .kit-corner-br {
             bottom: -15px;
             right: -15px;
         }
         
-        .ticket-corner-br::before {
+        .kit-corner-br::before {
             border-radius: 100% 0 0 0;
             bottom: 0;
             right: 0;
@@ -879,6 +881,12 @@
             z-index: 10;
         }
         
+        .kit-tag {
+            background: rgba(194, 37, 43, 0.9);
+            color: var(--racing-yellow);
+            font-weight: 700;
+        }
+        
         /* Filter counter */
         .filter-counter {
             text-align: center;
@@ -900,13 +908,156 @@
             }
         }
         
-        @keyframes ticketPulseHover {
+        @keyframes kitPulseHover {
             0% {
                 box-shadow: 0 0 10px var(--racing-yellow), 0 0 20px var(--racing-red);
             }
             100% {
                 box-shadow: 0 0 20px var(--racing-yellow), 0 0 40px var(--racing-red);
             }
+        }
+        
+        /* New Video Section Styles */
+        .videos {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .videos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
+        }
+        
+        .video-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--racing-yellow);
+        }
+        
+        .video-slides {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+        
+        .video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+        
+        .video-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 3;
+        }
+        
+        .video-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .video-indicator.active {
+            background-color: var(--racing-yellow);
+            transform: scale(1.3);
+            border-color: var(--racing-red);
+        }
+        
+        .video-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        .video-nav:hover {
+            background: var(--racing-red);
+            transform: translateY(-50%) scale(1.1);
+            color: var(--racing-yellow);
+        }
+        
+        .video-prev {
+            left: 10px;
+        }
+        
+        .video-next {
+            right: 10px;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .video-control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 2px solid var(--racing-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-control-btn:hover {
+            background: var(--racing-red);
+            color: var(--racing-yellow);
+            transform: scale(1.1);
         }
         
         /* Payment Section - Racing Style */
@@ -1183,6 +1334,114 @@
             }
         }
         
+        /* PayFast Modal */
+        .payfast-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payfast-modal-content {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--racing-yellow);
+            position: relative;
+        }
+        
+        .payfast-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--racing-yellow);
+            padding-bottom: 15px;
+        }
+        
+        .payfast-modal-header h3 {
+            color: var(--racing-yellow);
+            font-size: 1.8rem;
+        }
+        
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--racing-yellow);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .payfast-modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .payfast-form-group {
+            margin-bottom: 15px;
+        }
+        
+        .payfast-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .payfast-form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(214, 168, 79, 0.5);
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .payfast-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .btn-modal {
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .btn-modal-cancel {
+            background: transparent;
+            color: var(--light);
+            border-color: var(--light);
+        }
+        
+        .btn-modal-cancel:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .btn-modal-confirm {
+            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .btn-modal-confirm:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+        }
+        
         /* Responsive Design */
         @media (max-width: 1100px) {
             .payment-container {
@@ -1279,6 +1538,17 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            /* Video section adjustments */
+            .video-carousel {
+                max-width: 95%;
+            }
+            
+            .video-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1335,6 +1605,17 @@
             .cart-total {
                 font-size: 1.3rem;
             }
+            
+            .video-nav {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .video-control-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 380px) {
@@ -1357,9 +1638,9 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <!-- New Logo Container with Animation -->
+                <!-- Logo Container with Animation -->
                 <div class="logo-container">
-                    <img src="images/Logo.png" alt="Pinewood Speed Racer Logo" class="logo-img">
+                   <img src="images/Logo.png" alt="Pinewood Speed Racer Logo" class="logo-img">
                     <div class="dot red-dot"></div>
                     <div class="dot blue-dot"></div>
                 </div>
@@ -1374,8 +1655,8 @@
                 <ul id="nav-menu">
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="#gallery">Shop</a></li>
+                    <li><a href="#videos">Racing Videos</a></li>
                     <li><a href="#payment">Checkout</a></li>
-                    <li><a href="#rules">Rules</a></li>
                 </ul>
             </nav>
         </div>
@@ -1403,7 +1684,7 @@
                 <p>In collaboration with South Africa's one and only @MNR BRANNAS</p>
                 <div class="hero-btns">
                     <a href="#gallery" class="btn btn-racing btn-primary-racing">Shop Products</a>
-                    <a href="#rules" class="btn btn-racing btn-outline-racing">View Rules</a>
+                    <a href="#videos" class="btn btn-racing btn-outline-racing">Watch Videos</a>
                 </div>
             </div>
         </div>
@@ -1420,7 +1701,7 @@
             <div class="category-filter">
                 <select class="category-select" id="category-select">
                     <option value="all">All Categories</option>
-                    <option value="ticket">Race Tickets</option>
+                    <option value="kit">Race Kits</option>
                     <option value="tshirts">T-Shirts</option>
                     <option value="hoodies">Hoodies</option>
                     <option value="shorts">Shorts</option>
@@ -1433,7 +1714,40 @@
             </div>
             
             <div class="filter-counter" id="filter-counter">
-                Showing all 24 items
+                Showing all 28 items
+            </div>
+        </div>
+    </section>
+    
+    <!-- Racing Videos Section -->
+    <section class="videos" id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Racing Events</h2>
+                <p>Watch highlights from our thrilling races</p>
+            </div>
+            
+            <div class="video-carousel">
+                <div class="video-slides">
+                    <!-- Video slides will be added by JavaScript -->
+                </div>
+                <div class="video-indicators">
+                    <!-- Indicators will be added by JavaScript -->
+                </div>
+                <div class="video-nav video-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="video-nav video-next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="video-controls">
+                    <button class="video-control-btn" id="play-pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" id="mute-unmute">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1503,21 +1817,67 @@
                             <p>Your payment will be processed securely through PayFast, South Africa's leading payment gateway.</p>
                         </div>
                         
-                        <button type="submit" class="btn">Pay with PayFast</button>
+                        <button type="button" id="payfast-btn" class="btn">Pay with PayFast</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- PayFast Confirmation Modal -->
+    <div class="payfast-modal" id="payfast-modal">
+        <div class="payfast-modal-content">
+            <div class="payfast-modal-header">
+                <h3>Confirm Payment</h3>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="payfast-modal-body">
+                <p>You are about to proceed to PayFast to complete your payment of <strong id="confirm-amount">R 0.00</strong>.</p>
+                <p>Please confirm your payment details:</p>
+                
+                <div class="payfast-form-group">
+                    <label>Payment Method</label>
+                    <select class="payfast-form-control" id="payment-method">
+                        <option value="eft">EFT (Electronic Funds Transfer)</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="debit_card">Debit Card</option>
+                        <option value="masterpass">Masterpass</option>
+                        <option value="mobicred">Mobicred</option>
+                    </select>
+                </div>
+                
+                <div class="payfast-form-group">
+                    <label>Payment Reference</label>
+                    <input type="text" class="payfast-form-control" id="payment-reference" value="Pinewood-001" readonly>
+                </div>
+            </div>
+            <div class="payfast-modal-footer">
+                <button class="btn-modal btn-modal-cancel" id="cancel-payment">Cancel</button>
+                <button class="btn-modal btn-modal-confirm" id="confirm-payment">Proceed to PayFast</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Product data with your local image paths
         const products = [
             { 
-                name: "Racing Ticket", 
+                name: "Kit 1", 
                 price: 1000, 
-                image: "images/Racing_ticket.png", 
-                category: "ticket" 
+                image: "images/Kit1.jpeg", 
+                category: "kit" 
+            },
+            { 
+                name: "Kit 2", 
+                price: 2500, 
+                image: "images/Kit2.jpeg", 
+                category: "kit" 
+            },
+            { 
+                name: "Kit 3", 
+                price: 4000, 
+                image: "images/Kit3.jpeg", 
+                category: "kit" 
             },
             { 
                 name: "Black Dotty Shirt", 
@@ -1670,6 +2030,22 @@
             "images/Hero13.jpeg",
             "images/Hero14.jpeg"
         ];
+        
+        // Video data
+        const racingVideos = [
+            {
+                src: "images/Pinewood1.mp4",
+                title: "Pinewood Racing Highlights #1"
+            },
+            {
+                src: "images/Pinewood2.mp4",
+                title: "Pinewood Racing Highlights #2"
+            },
+            {
+                src: "images/Pinewood3.mp4",
+                title: "Pinewood Racing Highlights #3"
+            }
+        ];
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1703,6 +2079,48 @@
             
             // Apply initial filter
             filterItems();
+            
+            // Initialize video carousel
+            initVideoCarousel();
+            
+            // PayFast Modal functionality
+            const payfastModal = document.getElementById('payfast-modal');
+            const payfastBtn = document.getElementById('payfast-btn');
+            const closeModal = document.getElementById('close-modal');
+            const cancelPayment = document.getElementById('cancel-payment');
+            const confirmPayment = document.getElementById('confirm-payment');
+            const confirmAmount = document.getElementById('confirm-amount');
+            
+            payfastBtn.addEventListener('click', function() {
+                const total = parseFloat(document.getElementById('cart-total').textContent.replace('R', '').trim());
+                if (total <= 0) {
+                    showNotification('Please add items to your cart before checking out.');
+                    return;
+                }
+                
+                confirmAmount.textContent = `R ${total.toFixed(2)}`;
+                payfastModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                payfastModal.style.display = 'none';
+            });
+            
+            cancelPayment.addEventListener('click', function() {
+                payfastModal.style.display = 'none';
+            });
+            
+            confirmPayment.addEventListener('click', function() {
+                processPayFastPayment();
+                payfastModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === payfastModal) {
+                    payfastModal.style.display = 'none';
+                }
+            });
         });
 
         // Generate gallery items from product data
@@ -1715,27 +2133,30 @@
                 galleryItem.className = 'gallery-item';
                 galleryItem.dataset.category = product.category;
                 
-                // Add special class for ticket
-                if (product.name === "Racing Ticket") {
-                    galleryItem.classList.add('ticket-item');
+                // Add special class for kits
+                if (product.category === "kit") {
+                    galleryItem.classList.add('kit-item');
                     
-                    // Add decorative corners to ticket
+                    // Add decorative corners to kit
                     galleryItem.innerHTML = `
-                        <div class="ticket-corner ticket-corner-tl"></div>
-                        <div class="ticket-corner ticket-corner-tr"></div>
-                        <div class="ticket-corner ticket-corner-bl"></div>
-                        <div class="ticket-corner ticket-corner-br"></div>
+                        <div class="kit-corner kit-corner-tl"></div>
+                        <div class="kit-corner kit-corner-tr"></div>
+                        <div class="kit-corner kit-corner-bl"></div>
+                        <div class="kit-corner kit-corner-br"></div>
                     `;
                 }
                 
                 // Add category tag
                 const categoryTag = document.createElement('div');
                 categoryTag.className = 'category-tag';
+                if (product.category === "kit") {
+                    categoryTag.classList.add('kit-tag');
+                }
                 categoryTag.textContent = product.category === 'tshirts' ? 'T-Shirt' : 
                                          product.category === 'hoodies' ? 'Hoodie' :
                                          product.category === 'shorts' ? 'Shorts' :
                                          product.category === 'caps' ? 'Cap' :
-                                         product.category === 'ticket' ? 'Ticket' : product.category;
+                                         product.category === 'kit' ? 'Kit' : product.category;
                 galleryItem.appendChild(categoryTag);
                 
                 // Add product content
@@ -1745,7 +2166,7 @@
                     <div class="gallery-info">
                         <h3>${product.name}</h3>
                         <div class="gallery-price">R ${product.price.toFixed(2)}</div>
-                        <p class="gallery-desc">High-quality racing apparel for enthusiasts and professionals</p>
+                        <p class="gallery-desc">${product.category === 'kit' ? 'Premium racing kit for champions' : 'High-quality racing apparel for enthusiasts and professionals'}</p>
                         ${product.category === 'tshirts' || product.category === 'hoodies' ? `
                         <div class="size-selector">
                             <label for="size">Size:</label>
@@ -1802,7 +2223,7 @@
                 case 'hoodies': return 'Hoodies';
                 case 'shorts': return 'Shorts';
                 case 'caps': return 'Caps';
-                case 'ticket': return 'Race Tickets';
+                case 'kit': return 'Race Kits';
                 default: return category;
             }
         }
@@ -1880,6 +2301,150 @@
                 clearInterval(intervalId);
                 startInterval();
             }
+        }
+        
+        // Initialize video carousel
+        function initVideoCarousel() {
+            const videoSlides = document.querySelector('.video-slides');
+            const videoIndicators = document.querySelector('.video-indicators');
+            
+            // Clear existing slides and indicators
+            videoSlides.innerHTML = '';
+            videoIndicators.innerHTML = '';
+            
+            // Create slides and indicators
+            racingVideos.forEach((video, index) => {
+                // Create slide
+                const slide = document.createElement('div');
+                slide.className = 'video-slide';
+                slide.dataset.title = video.title;
+                if (index === 0) slide.classList.add('active');
+                
+                slide.innerHTML = `
+                    <video class="video-player">
+                        <source src="${video.src}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+                
+                videoSlides.appendChild(slide);
+                
+                // Create indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'video-indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => {
+                    setActiveVideo(index);
+                    resetInterval();
+                });
+                videoIndicators.appendChild(indicator);
+            });
+            
+            const slides = document.querySelectorAll('.video-slide');
+            const videos = document.querySelectorAll('.video-player');
+            const indicators = document.querySelectorAll('.video-indicator');
+            const prevBtn = document.querySelector('.video-prev');
+            const nextBtn = document.querySelector('.video-next');
+            const playPauseBtn = document.getElementById('play-pause');
+            const muteUnmuteBtn = document.getElementById('mute-unmute');
+            let currentIndex = 0;
+            let intervalId;
+            
+            // Navigation buttons
+            prevBtn.addEventListener('click', () => navigateVideo(-1));
+            nextBtn.addEventListener('click', () => navigateVideo(1));
+            
+            // Play/Pause button
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            
+            // Mute/Unmute button
+            muteUnmuteBtn.addEventListener('click', toggleMute);
+            
+            // Start auto rotation
+            startInterval();
+            
+            // Navigate videos
+            function navigateVideo(direction) {
+                pauseCurrentVideo();
+                currentIndex = (currentIndex + direction + slides.length) % slides.length;
+                setActiveVideo(currentIndex);
+                resetInterval();
+            }
+            
+            // Set active video
+            function setActiveVideo(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                currentIndex = index;
+                
+                // Update play/pause button
+                updatePlayPauseButton();
+            }
+            
+            // Toggle play/pause
+            function togglePlayPause() {
+                const currentVideo = videos[currentIndex];
+                if (currentVideo.paused) {
+                    currentVideo.play();
+                } else {
+                    currentVideo.pause();
+                }
+                updatePlayPauseButton();
+            }
+            
+            // Update play/pause button icon
+            function updatePlayPauseButton() {
+                const currentVideo = videos[currentIndex];
+                const icon = playPauseBtn.querySelector('i');
+                icon.className = currentVideo.paused ? 'fas fa-play' : 'fas fa-pause';
+            }
+            
+            // Toggle mute
+            function toggleMute() {
+                const currentVideo = videos[currentIndex];
+                currentVideo.muted = !currentVideo.muted;
+                
+                const icon = muteUnmuteBtn.querySelector('i');
+                icon.className = currentVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            }
+            
+            // Pause current video
+            function pauseCurrentVideo() {
+                const currentVideo = videos[currentIndex];
+                currentVideo.pause();
+                updatePlayPauseButton();
+            }
+            
+            // Start rotation interval
+            function startInterval() {
+                intervalId = setInterval(() => {
+                    pauseCurrentVideo();
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    setActiveVideo(currentIndex);
+                }, 10000);
+            }
+            
+            // Reset interval
+            function resetInterval() {
+                clearInterval(intervalId);
+                startInterval();
+            }
+            
+            // Set up video events
+            videos.forEach((video, index) => {
+                video.addEventListener('play', () => {
+                    if (index !== currentIndex) {
+                        video.pause();
+                    } else {
+                        updatePlayPauseButton();
+                    }
+                });
+                
+                video.addEventListener('pause', updatePlayPauseButton);
+            });
         }
         
         // Shopping cart functionality
@@ -1989,19 +2554,72 @@
                     notification.remove();
                 }, 3000);
             }
+        }
+        
+        // Process PayFast payment
+        function processPayFastPayment() {
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const total = parseFloat(document.getElementById('cart-total').textContent.replace('R', '').trim());
             
-            // Handle form submission
-            document.getElementById('checkout-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (cart.length === 0) {
-                    showNotification('Please add items to your cart before checking out.');
-                    return;
-                }
-                
-                showNotification('Thank you for your purchase! Your order has been processed.');
-                cart = [];
-                updateCartDisplay();
-            });
+            if (!firstName || !lastName || !email || !phone || !address) {
+                showNotification('Please fill in all customer information fields.');
+                return;
+            }
+            
+            if (total <= 0) {
+                showNotification('Your cart is empty. Please add items before proceeding.');
+                return;
+            }
+            
+            // Create a unique payment ID
+            const paymentId = 'PWR-' + Date.now();
+            
+            // Create a form to submit to PayFast
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = 'https://www.payfast.co.za/eng/process'; // LIVE URL
+            form.style.display = 'none';
+            
+            // Add required PayFast parameters
+            const addInput = (name, value) => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = value;
+                form.appendChild(input);
+            };
+            
+            // PayFast credentials - USE YOUR ACTUAL CREDENTIALS HERE
+            addInput('merchant_id', '31098559'); // Your Merchant ID
+            addInput('merchant_key', 'YOUR_ACTUAL_MERCHANT_KEY'); // REPLACE WITH YOUR MERCHANT KEY
+            
+            // Payment details
+            addInput('amount', total.toFixed(2));
+            addInput('item_name', 'Pinewood Speed Racer Purchase');
+            addInput('m_payment_id', paymentId);
+            addInput('currency', 'ZAR'); // South African Rand
+            
+            // Customer details
+            addInput('name_first', firstName);
+            addInput('name_last', lastName);
+            addInput('email_address', email);
+            addInput('cell_number', phone);
+            
+            // Configured return URLs - REPLACE WITH YOUR ACTUAL URLs
+            addInput('return_url', 'https://yourdomain.com/payment-success');
+            addInput('cancel_url', 'https://yourdomain.com/payment-cancelled');
+            addInput('notify_url', 'https://yourdomain.com/payfast-itn-handler');
+            
+            // Add form to document and submit
+            document.body.appendChild(form);
+            form.submit();
+            
+            // Show processing notification
+            showNotification('Processing your payment with PayFast...');
         }
     </script>
 </body>
