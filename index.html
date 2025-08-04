@@ -518,14 +518,14 @@
             z-index: 1;
         }
         
-        /* Gallery Section - Racing Style */
-        .gallery {
+        /* Racing Videos Section */
+        .videos {
             background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
             padding: 60px 0;
             position: relative;
         }
         
-        .gallery::before {
+        .videos::before {
             content: '';
             position: absolute;
             top: 0;
@@ -569,6 +569,149 @@
             margin: 20px auto 0;
             font-size: 1.1rem;
             padding: 0 15px;
+        }
+        
+        .video-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--racing-yellow);
+        }
+        
+        .video-slides {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+        
+        .video-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+        
+        .video-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 3;
+        }
+        
+        .video-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .video-indicator.active {
+            background-color: var(--racing-yellow);
+            transform: scale(1.3);
+            border-color: var(--racing-red);
+        }
+        
+        .video-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--racing-yellow);
+        }
+        
+        .video-nav:hover {
+            background: var(--racing-red);
+            transform: translateY(-50%) scale(1.1);
+            color: var(--racing-yellow);
+        }
+        
+        .video-prev {
+            left: 10px;
+        }
+        
+        .video-next {
+            right: 10px;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .video-control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 2px solid var(--racing-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .video-control-btn:hover {
+            background: var(--racing-red);
+            color: var(--racing-yellow);
+            transform: scale(1.1);
+        }
+        
+        /* Gallery Section - Racing Style */
+        .gallery {
+            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
         }
         
         .category-filter {
@@ -917,149 +1060,6 @@
             }
         }
         
-        /* New Video Section Styles */
-        .videos {
-            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
-            padding: 60px 0;
-            position: relative;
-        }
-        
-        .videos::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
-        }
-        
-        .video-carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--racing-yellow);
-        }
-        
-        .video-slides {
-            position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background: #000;
-        }
-        
-        .video-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 1;
-        }
-        
-        .video-slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
-        
-        .video-slide video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .video-indicators {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 3;
-        }
-        
-        .video-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-        
-        .video-indicator.active {
-            background-color: var(--racing-yellow);
-            transform: scale(1.3);
-            border-color: var(--racing-red);
-        }
-        
-        .video-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 4;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid var(--racing-yellow);
-        }
-        
-        .video-nav:hover {
-            background: var(--racing-red);
-            transform: translateY(-50%) scale(1.1);
-            color: var(--racing-yellow);
-        }
-        
-        .video-prev {
-            left: 10px;
-        }
-        
-        .video-next {
-            right: 10px;
-        }
-        
-        .video-controls {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            z-index: 5;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .video-control-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: 2px solid var(--racing-yellow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .video-control-btn:hover {
-            background: var(--racing-red);
-            color: var(--racing-yellow);
-            transform: scale(1.1);
-        }
-        
         /* Payment Section - Racing Style */
         .payment {
             background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
@@ -1334,112 +1334,67 @@
             }
         }
         
-        /* PayFast Modal */
-        .payfast-modal {
-            display: none;
-            position: fixed;
+        /* PayFast Form Styling */
+        .payfast-form-container {
+            background: rgba(26, 44, 67, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(214, 168, 79, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .payfast-form-container::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
         }
         
-        .payfast-modal-content {
-            background: linear-gradient(135deg, #0f1c2d 0%, #1a2c43 100%);
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--racing-yellow);
-            position: relative;
-        }
-        
-        .payfast-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--racing-yellow);
-            padding-bottom: 15px;
-        }
-        
-        .payfast-modal-header h3 {
-            color: var(--racing-yellow);
-            font-size: 1.8rem;
-        }
-        
-        .close-modal {
-            background: transparent;
-            border: none;
-            color: var(--racing-yellow);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .payfast-modal-body {
-            margin-bottom: 20px;
-        }
-        
-        .payfast-form-group {
-            margin-bottom: 15px;
-        }
-        
-        .payfast-form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--light);
-            font-weight: 500;
-        }
-        
-        .payfast-form-control {
+        .payfast-form-table {
             width: 100%;
-            padding: 12px 15px;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .payfast-form-table td {
+            padding: 8px 0;
+            vertical-align: top;
+        }
+        
+        .payfast-form-table input[type="text"],
+        .payfast-form-table input[type="number"],
+        .payfast-form-table select {
+            width: 100%;
+            padding: 10px;
             border: 1px solid rgba(214, 168, 79, 0.5);
-            border-radius: 6px;
+            border-radius: 4px;
             background: rgba(0, 0, 0, 0.3);
             color: white;
             font-size: 1rem;
         }
         
-        .payfast-modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
+        .payfast-form-table input[type="image"] {
+            margin: 20px auto;
+            display: block;
+            max-width: 200px;
+            height: auto;
         }
         
-        .btn-modal {
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
+        .shipping-header {
+            font-weight: bold;
+            padding-top: 20px;
+            font-size: 1.1rem;
+            color: var(--racing-yellow);
         }
         
-        .btn-modal-cancel {
-            background: transparent;
-            color: var(--light);
-            border-color: var(--light);
-        }
-        
-        .btn-modal-cancel:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .btn-modal-confirm {
-            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
-            color: var(--dark);
-            font-weight: 700;
-        }
-        
-        .btn-modal-confirm:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+        .required-star {
+            color: var(--racing-red);
         }
         
         /* Responsive Design */
@@ -1585,7 +1540,7 @@
                 margin: 0 auto;
             }
             
-            .cart-summary, .payment-form {
+            .cart-summary, .payment-form, .payfast-form-container {
                 padding: 20px;
             }
             
@@ -1640,7 +1595,7 @@
             <div class="logo">
                 <!-- Logo Container with Animation -->
                 <div class="logo-container">
-                   <img src="images/Logo.png" alt="Pinewood Speed Racer Logo" class="logo-img">
+                    <div class="logo-img"></div>
                     <div class="dot red-dot"></div>
                     <div class="dot blue-dot"></div>
                 </div>
@@ -1654,8 +1609,8 @@
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#gallery">Shop</a></li>
                     <li><a href="#videos">Racing Videos</a></li>
+                    <li><a href="#gallery">Shop</a></li>
                     <li><a href="#payment">Checkout</a></li>
                 </ul>
             </nav>
@@ -1690,35 +1645,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Racing Apparel & Gear</h2>
-                <p>Premium merchandise for champions on and off the track</p>
-            </div>
-            
-            <div class="category-filter">
-                <select class="category-select" id="category-select">
-                    <option value="all">All Categories</option>
-                    <option value="kit">Race Kits</option>
-                    <option value="tshirts">T-Shirts</option>
-                    <option value="hoodies">Hoodies</option>
-                    <option value="shorts">Shorts</option>
-                    <option value="caps">Caps</option>
-                </select>
-            </div>
-            
-            <div class="gallery-grid" id="gallery-grid">
-                <!-- Gallery items will be populated by JavaScript -->
-            </div>
-            
-            <div class="filter-counter" id="filter-counter">
-                Showing all 28 items
-            </div>
-        </div>
-    </section>
-    
     <!-- Racing Videos Section -->
     <section class="videos" id="videos">
         <div class="container">
@@ -1752,6 +1678,35 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Racing Apparel & Gear</h2>
+                <p>Premium merchandise for champions on and off the track</p>
+            </div>
+            
+            <div class="category-filter">
+                <select class="category-select" id="category-select">
+                    <option value="all">All Categories</option>
+                    <option value="kit">Race Kits</option>
+                    <option value="tshirts">T-Shirts</option>
+                    <option value="hoodies">Hoodies</option>
+                    <option value="shorts">Shorts</option>
+                    <option value="caps">Caps</option>
+                </select>
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+            
+            <div class="filter-counter" id="filter-counter">
+                Showing all 28 items
+            </div>
+        </div>
+    </section>
+
     <!-- Payment Section -->
     <section class="payment" id="payment">
         <div class="racing-stripes"></div>
@@ -1773,42 +1728,7 @@
                     </div>
                 </div>
                 
-                <div class="payment-form">
-                    <h3>Customer Information</h3>
-                    <form id="checkout-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" class="form-control" placeholder="Your First Name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" class="form-control" placeholder="Your Last Name" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="id-number">South African ID Number</label>
-                            <input type="text" id="id-number" class="form-control" placeholder="ID Number" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="+27 11 123 4567" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="address">Shipping Address</label>
-                            <textarea id="address" class="form-control" placeholder="Full shipping address" required rows="4"></textarea>
-                        </div>
+                
                         
                         <!-- PayFast Payment Information -->
                         <div class="payfast-info">
@@ -1816,47 +1736,146 @@
                             <img src="https://www.payfast.co.za/assets/logo/payfast_logo_blue.svg" alt="PayFast Secure Payments">
                             <p>Your payment will be processed securely through PayFast, South Africa's leading payment gateway.</p>
                         </div>
-                        
-                        <button type="button" id="payfast-btn" class="btn">Pay with PayFast</button>
                     </form>
+                    
+                    <!-- Integrated PayFast Form -->
+                    <div class="payfast-form-container">
+                        <h3>Shipping & Payment Details</h3>
+                        <script type="text/javascript">
+                        function shippingRequiredPayFast (formReference) {
+                            let cont = true;
+                            for( let i = 0; i < formReference.elements.length; i++ ) {
+                                if( formReference.elements[i].className !== 'shipping' )
+                                    continue;
+                                
+                                if( formReference.elements[i].name === 'line2' )
+                                    continue;
+                                
+                                if( !cont )
+                                    continue;
+                                
+                                if( formReference.elements[i].name === 'country' ) {
+                                    if( formReference.elements[i].selectedIndex === 0 ) {
+                                        cont = false;
+                                        alert ( 'Select a country' );
+                                    }
+                                } else {
+                                    if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
+                                        cont = false;
+                                        alert ( 'Complete all the mandatory address fields' );
+                                    }
+                                }
+                            }
+                            if( !cont ) {
+                                return cont;
+                            }
+                        }
+                        </script>
+                        <script type="text/javascript">
+                        function customQuantitiesPayFast (formReference) {
+                            formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
+                            return true;
+                        }
+                        </script>
+                        <script type="text/javascript">
+                        function actionPayFastJavascript ( formReference ) {
+                            // Validate customer information form
+                            const customerForm = document.getElementById('checkout-form');
+                            if (!customerForm.checkValidity()) {
+                                customerForm.reportValidity();
+                                return false;
+                            }
+
+                            // Existing shipping and quantity validation
+                            let shippingValid = shippingRequiredPayFast( formReference );
+                            let shippingValidOrOff = typeof shippingValid !== 'undefined' ? shippingValid : true; 
+                            let customValid = shippingValidOrOff ? customQuantitiesPayFast( formReference ) : false;
+                            
+                            if (typeof shippingValid !== 'undefined' && !shippingValid) {
+                                return false;
+                            }
+                            if (typeof customValid !== 'undefined' && !customValid) {
+                                return false;
+                            }
+
+                            // Set customer details in the PayFast form
+                            formReference.name_first.value = document.getElementById('first-name').value;
+                            formReference.name_last.value = document.getElementById('last-name').value;
+                            formReference.email_address.value = document.getElementById('email').value;
+                            formReference.cell_number.value = document.getElementById('phone').value;
+
+                            return true;
+                        }
+                        </script>
+                        <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+                            <input required type="hidden" name="cmd" value="_paynow">
+                            <input required type="hidden" name="receiver" pattern="[0-9]" value="31098559">
+                            <input required type="hidden" name="merchant_key" value="ldi9hjchk0cg2">
+                            <input type="hidden" name="name_first" value="">
+                            <input type="hidden" name="name_last" value="">
+                            <input type="hidden" name="email_address" value="">
+                            <input type="hidden" name="cell_number" value="">
+                            <input type="hidden" name="return_url" value="https://pinewoodspeedracer.co.za">
+                            <input type="hidden" name="cancel_url" value="https://pinewoodspeedracer.co.za">
+                            <input type="hidden" name="notify_url" value="https://pinewoodspeedracer.co.za">
+                            <input required type="hidden" name="amount" id="payfast-amount" value="200">
+                            
+                            <table class="payfast-form-table">
+                                <tr>
+                                    <td><label for="custom_quantity">Quantity: </label></td>
+                                    <td><input required id="custom_quantity" type="number" name="custom_quantity" value="1" min="1"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="shipping-header">Shipping Address</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required-star">*</span>&nbsp;Line 1</td>
+                                    <td><input type="text" name="line1" class="shipping form-control" value="" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Line 2</td>
+                                    <td><input type="text" name="line2" class="shipping form-control" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required-star">*</span>&nbsp;City</td>
+                                    <td><input type="text" class="shipping form-control" name="city" value="" required></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required-star">*</span>&nbsp;Province</td>
+                                    <td><input type="text" class="shipping form-control" name="region" value="" required></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required-star">*</span>&nbsp;Country</td>
+                                    <td>
+                                        <select name="country" class="shipping form-control" required>
+                                            <option value="" selected="selected">- Select -</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="">------------------------</option>
+                                            <option value="Botswana">Botswana</option>
+                                            <option value="Lesotho">Lesotho</option>
+                                            <option value="Mauritius">Mauritius</option>
+                                            <option value="Mozambique">Mozambique</option>
+                                            <option value="Swaziland">Swaziland</option>
+                                            <option value="Zimbabwe">Zimbabwe</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required-star">*</span>&nbsp;Postal Code</td>
+                                    <td><input type="number" name="code" class="shipping form-control" value="" required></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="image" src="https://my.payfast.io/images/buttons/PayNow/Primary-Large-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- PayFast Confirmation Modal -->
-    <div class="payfast-modal" id="payfast-modal">
-        <div class="payfast-modal-content">
-            <div class="payfast-modal-header">
-                <h3>Confirm Payment</h3>
-                <button class="close-modal" id="close-modal">&times;</button>
-            </div>
-            <div class="payfast-modal-body">
-                <p>You are about to proceed to PayFast to complete your payment of <strong id="confirm-amount">R 0.00</strong>.</p>
-                <p>Please confirm your payment details:</p>
-                
-                <div class="payfast-form-group">
-                    <label>Payment Method</label>
-                    <select class="payfast-form-control" id="payment-method">
-                        <option value="eft">EFT (Electronic Funds Transfer)</option>
-                        <option value="credit_card">Credit Card</option>
-                        <option value="debit_card">Debit Card</option>
-                        <option value="masterpass">Masterpass</option>
-                        <option value="mobicred">Mobicred</option>
-                    </select>
-                </div>
-                
-                <div class="payfast-form-group">
-                    <label>Payment Reference</label>
-                    <input type="text" class="payfast-form-control" id="payment-reference" value="Pinewood-001" readonly>
-                </div>
-            </div>
-            <div class="payfast-modal-footer">
-                <button class="btn-modal btn-modal-cancel" id="cancel-payment">Cancel</button>
-                <button class="btn-modal btn-modal-confirm" id="confirm-payment">Proceed to PayFast</button>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Product data with your local image paths
@@ -2082,45 +2101,6 @@
             
             // Initialize video carousel
             initVideoCarousel();
-            
-            // PayFast Modal functionality
-            const payfastModal = document.getElementById('payfast-modal');
-            const payfastBtn = document.getElementById('payfast-btn');
-            const closeModal = document.getElementById('close-modal');
-            const cancelPayment = document.getElementById('cancel-payment');
-            const confirmPayment = document.getElementById('confirm-payment');
-            const confirmAmount = document.getElementById('confirm-amount');
-            
-            payfastBtn.addEventListener('click', function() {
-                const total = parseFloat(document.getElementById('cart-total').textContent.replace('R', '').trim());
-                if (total <= 0) {
-                    showNotification('Please add items to your cart before checking out.');
-                    return;
-                }
-                
-                confirmAmount.textContent = `R ${total.toFixed(2)}`;
-                payfastModal.style.display = 'flex';
-            });
-            
-            closeModal.addEventListener('click', function() {
-                payfastModal.style.display = 'none';
-            });
-            
-            cancelPayment.addEventListener('click', function() {
-                payfastModal.style.display = 'none';
-            });
-            
-            confirmPayment.addEventListener('click', function() {
-                processPayFastPayment();
-                payfastModal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === payfastModal) {
-                    payfastModal.style.display = 'none';
-                }
-            });
         });
 
         // Generate gallery items from product data
@@ -2500,6 +2480,7 @@
             function updateCartDisplay() {
                 const cartItems = document.getElementById('cart-items');
                 const cartTotal = document.getElementById('cart-total');
+                const payfastAmount = document.getElementById('payfast-amount');
                 
                 // Clear cart
                 cartItems.innerHTML = '';
@@ -2510,6 +2491,7 @@
                 if (cart.length === 0) {
                     cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
                     cartTotal.textContent = 'R 0.00';
+                    payfastAmount.value = '0';
                     return;
                 }
                 
@@ -2540,6 +2522,7 @@
                 });
                 
                 cartTotal.textContent = `R ${total.toFixed(2)}`;
+                payfastAmount.value = total.toFixed(2);
             }
             
             // Show notification
@@ -2562,10 +2545,10 @@
             const lastName = document.getElementById('last-name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
+            const idNumber = document.getElementById('id-number').value;
             const total = parseFloat(document.getElementById('cart-total').textContent.replace('R', '').trim());
             
-            if (!firstName || !lastName || !email || !phone || !address) {
+            if (!firstName || !lastName || !email || !phone || !idNumber) {
                 showNotification('Please fill in all customer information fields.');
                 return;
             }
@@ -2575,51 +2558,8 @@
                 return;
             }
             
-            // Create a unique payment ID
-            const paymentId = 'PWR-' + Date.now();
-            
-            // Create a form to submit to PayFast
-            const form = document.createElement('form');
-            form.method = 'post';
-            form.action = 'https://www.payfast.co.za/eng/process'; // LIVE URL
-            form.style.display = 'none';
-            
-            // Add required PayFast parameters
-            const addInput = (name, value) => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = name;
-                input.value = value;
-                form.appendChild(input);
-            };
-            
-            // PayFast credentials - USE YOUR ACTUAL CREDENTIALS HERE
-            addInput('merchant_id', '31098559'); // Your Merchant ID
-            addInput('merchant_key', 'YOUR_ACTUAL_MERCHANT_KEY'); // REPLACE WITH YOUR MERCHANT KEY
-            
-            // Payment details
-            addInput('amount', total.toFixed(2));
-            addInput('item_name', 'Pinewood Speed Racer Purchase');
-            addInput('m_payment_id', paymentId);
-            addInput('currency', 'ZAR'); // South African Rand
-            
-            // Customer details
-            addInput('name_first', firstName);
-            addInput('name_last', lastName);
-            addInput('email_address', email);
-            addInput('cell_number', phone);
-            
-            // Configured return URLs - REPLACE WITH YOUR ACTUAL URLs
-            addInput('return_url', 'https://yourdomain.com/payment-success');
-            addInput('cancel_url', 'https://yourdomain.com/payment-cancelled');
-            addInput('notify_url', 'https://yourdomain.com/payfast-itn-handler');
-            
-            // Add form to document and submit
-            document.body.appendChild(form);
-            form.submit();
-            
-            // Show processing notification
-            showNotification('Processing your payment with PayFast...');
+            // Submit the PayFast form
+            document.forms['PayFastPayNowForm'].submit();
         }
     </script>
 </body>
