@@ -82,30 +82,80 @@
             gap: 15px;
         }
         
-        /* Updated Logo Container */
+        /* Updated Animated Logo Container */
         .logo-container {
             position: relative;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            overflow: hidden;
+            overflow: visible;
+            z-index: 10;
+        }
+        
+        .logo-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #0f1c2d;
+            border-radius: 50%;
             border: 2px solid var(--racing-yellow);
             box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-            background: #0f1c2d;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2;
             animation: pulseLogo 2s infinite;
         }
         
         .logo-img {
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%230f1c2d" stroke="%23ffcc00" stroke-width="2"/><path d="M30,40 L50,20 L70,40 L65,60 L35,60 Z" fill="%23ffcc00"/><circle cx="50" cy="50" r="10" fill="%23e60000"/></svg>');
+            width: 70%;
+            height: 70%;
+            background-image: url('images/Logo.png');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.7));
+            z-index: 3;
+        }
+        
+        /* Racing orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 1;
+            filter: drop-shadow(0 0 4px rgba(0,0,0,0.8));
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+        .red-orb {
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000);
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: orbit 3s infinite linear;
+        }
+        
+        .blue-orb {
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(circle at 30% 30%, #66b3ff, #0066cc);
+            bottom: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: orbit 4s infinite linear reverse;
+        }
+        
+        /* Orb animation */
+        @keyframes orbit {
+            0% {
+                transform: translateX(-50%) rotate(0deg) translateY(35px) rotate(0deg);
+            }
+            100% {
+                transform: translateX(-50%) rotate(360deg) translateY(35px) rotate(-360deg);
+            }
         }
         
         .logo h1 {
@@ -1224,7 +1274,7 @@
             padding: 15px 30px;
             border-radius: 8px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 1rem;
@@ -1502,8 +1552,22 @@
             }
             
             .logo-container {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .red-orb, .blue-orb {
+                width: 12px;
+                height: 12px;
+            }
+            
+            @keyframes orbit {
+                0% {
+                    transform: translateX(-50%) rotate(0deg) translateY(30px) rotate(0deg);
+                }
+                100% {
+                    transform: translateX(-50%) rotate(360deg) translateY(30px) rotate(-360deg);
+                }
             }
         }
         
@@ -1568,8 +1632,22 @@
             }
             
             .logo-container {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .red-orb, .blue-orb {
+                width: 10px;
+                height: 10px;
+            }
+            
+            @keyframes orbit {
+                0% {
+                    transform: translateX(-50%) rotate(0deg) translateY(25px) rotate(0deg);
+                }
+                100% {
+                    transform: translateX(-50%) rotate(360deg) translateY(25px) rotate(-360deg);
+                }
             }
         }
         
@@ -1591,8 +1669,8 @@
             }
             
             .logo-container {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -1602,9 +1680,13 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <!-- Updated Logo Container -->
+                <!-- Animated Logo Container -->
                 <div class="logo-container">
-                    <div class="logo-img"></div>
+                    <div class="logo-bg">
+                        <div class="logo-img"></div>
+                    </div>
+                    <div class="orb red-orb"></div>
+                    <div class="orb blue-orb"></div>
                 </div>
                 <h1>Pinewood Speed Racer</h1>
             </div>
