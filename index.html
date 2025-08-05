@@ -1215,7 +1215,7 @@
             margin: 0 auto;
         }
         
-        /* Simplified PayFast Button */
+        /* PayFast Button */
         .payfast-btn {
             background: linear-gradient(45deg, #1e3c72, #2a5298);
             color: white;
@@ -1729,34 +1729,44 @@
                 
                 <div class="payment-form">
                     <h3>Customer Information</h3>
-                    <form id="checkout-form">
+                    <form id="checkout-form" method="post" action="https://www.payfast.co.za/eng/process">
+                        <!-- PayFast Required Parameters -->
+                        <input type="hidden" name="merchant_id" value="31098559">
+                        <input type="hidden" name="merchant_key" value="ldi9hjchk0cg2">
+                        <input type="hidden" name="return_url" value="https://pinewoodspeedracer.co.za/success">
+                        <input type="hidden" name="cancel_url" value="https://pinewoodspeedracer.co.za/cancel">
+                        <input type="hidden" name="notify_url" value="https://pinewoodspeedracer.co.za/notify">
+                        <input type="hidden" name="amount" id="payfast-amount" value="0.00">
+                        <input type="hidden" name="item_name" id="payfast-item-name" value="Pinewood Speed Racer Order">
+                        
+                        <!-- Cart data for server-side processing -->
+                        <input type="hidden" name="cart_data" id="cart-data">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="first-name">First Name <span class="required-star">*</span></label>
-                                <input type="text" id="first-name" class="form-control" placeholder="Your First Name" required>
+                                <input type="text" id="first-name" name="name_first" class="form-control" placeholder="Your First Name" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="last-name">Last Name <span class="required-star">*</span></label>
-                                <input type="text" id="last-name" class="form-control" placeholder="Your Last Name" required>
+                                <input type="text" id="last-name" name="name_last" class="form-control" placeholder="Your Last Name" required>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="id-number">South African ID Number <span class="required-star">*</span></label>
-                            <input type="text" id="id-number" class="form-control" placeholder="ID Number" required>
+                            <input type="text" id="id-number" name="custom_str1" class="form-control" placeholder="ID Number" required>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address <span class="required-star">*</span></label>
-                                <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone Number <span class="required-star">*</span></label>
-                                <input type="tel" id="phone" class="form-control" placeholder="+27 11 123 4567" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required-star">*</span></label>
+                            <input type="email" id="email" name="email_address" class="form-control" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required-star">*</span></label>
+                            <input type="tel" id="phone" name="cell_number" class="form-control" placeholder="+27 11 123 4567" required>
                         </div>
                         
                         <!-- Address Section -->
@@ -1765,30 +1775,30 @@
                             
                             <div class="form-group">
                                 <label for="line1">Address Line 1 <span class="required-star">*</span></label>
-                                <input type="text" id="line1" class="form-control" placeholder="Street Address" required>
+                                <input type="text" id="line1" name="address_line_1" class="form-control" placeholder="Street Address" required>
                             </div>
                             
                             <div class="form-group">
                                 <label for="line2">Address Line 2</label>
-                                <input type="text" id="line2" class="form-control" placeholder="Apartment, Suite, etc.">
+                                <input type="text" id="line2" name="address_line_2" class="form-control" placeholder="Apartment, Suite, etc.">
                             </div>
                             
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="city">City <span class="required-star">*</span></label>
-                                    <input type="text" id="city" class="form-control" placeholder="City" required>
+                                    <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="region">Province <span class="required-star">*</span></label>
-                                    <input type="text" id="region" class="form-control" placeholder="Province" required>
+                                    <input type="text" id="region" name="region" class="form-control" placeholder="Province" required>
                                 </div>
                             </div>
                             
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="country">Country <span class="required-star">*</span></label>
-                                    <select id="country" class="form-control" required>
+                                    <select id="country" name="country" class="form-control" required>
                                         <option value="" selected disabled>Select Country</option>
                                         <option value="South Africa">South Africa</option>
                                         <option value="Botswana">Botswana</option>
@@ -1802,7 +1812,7 @@
                                 
                                 <div class="form-group">
                                     <label for="code">Postal Code <span class="required-star">*</span></label>
-                                    <input type="text" id="code" class="form-control" placeholder="Postal Code" required>
+                                    <input type="text" id="code" name="postal_code" class="form-control" placeholder="Postal Code" required>
                                 </div>
                             </div>
                         </div>
@@ -1835,25 +1845,14 @@
                             <p>Your payment will be processed securely through PayFast, South Africa's leading payment gateway.</p>
                         </div>
                         
-                        <!-- Simplified PayFast Button -->
-                        <button type="button" id="payfast-btn" class="payfast-btn">
+                        <!-- PayFast Button -->
+                        <button type="submit" id="payfast-btn" class="payfast-btn">
                             <i class="fas fa-lock"></i> PAY NOW WITH PAYFAST
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Order Confirmation Section (Hidden by default) -->
-    <section class="confirmation" id="confirmation" style="display: none;">
-        <h2>Order Confirmed!</h2>
-        <p>Thank you for your purchase at Pinewood Speed Racer</p>
-        <p>Your order has been successfully processed</p>
-        <div class="confirmation-number">Order #: <span id="order-number">PSR-2023-00125</span></div>
-        <p>A confirmation email has been sent to <strong id="customer-email">customer@example.com</strong></p>
-        <p>Your items will be shipped within 2-3 business days</p>
-        <a href="#gallery" class="btn btn-racing btn-primary-racing" style="margin-top: 20px;">Continue Shopping</a>
     </section>
 
     <script>
@@ -2085,8 +2084,8 @@
             // Add cart functionality
             setupCart();
             
-            // Setup PayFast button
-            setupPayFastButton();
+            // Setup form submission
+            setupFormSubmission();
             
             // Mobile menu toggle
             const menuToggle = document.getElementById('menu-toggle');
@@ -2490,6 +2489,10 @@
             document.getElementById('summary-subtotal').textContent = `R ${subtotal.toFixed(2)}`;
             document.getElementById('summary-tax').textContent = `R ${tax.toFixed(2)}`;
             document.getElementById('summary-total').textContent = `R ${total.toFixed(2)}`;
+            
+            // Update PayFast hidden fields
+            document.getElementById('payfast-amount').value = total.toFixed(2);
+            document.getElementById('payfast-item-name').value = `Pinewood Speed Racer Order (${cart.length} items)`;
         }
         
         // Show notification
@@ -2506,15 +2509,17 @@
             }, 3000);
         }
         
-        // Setup PayFast button - Simulates a real payment process
-        function setupPayFastButton() {
-            const payFastBtn = document.getElementById('payfast-btn');
+        // Setup form submission for PayFast
+        function setupFormSubmission() {
+            const checkoutForm = document.getElementById('checkout-form');
             
-            payFastBtn.addEventListener('click', function() {
+            checkoutForm.addEventListener('submit', function(e) {
+                // Prevent default form submission until validation
+                e.preventDefault();
+                
                 // Validate form
-                const form = document.getElementById('checkout-form');
-                if (!form.checkValidity()) {
-                    form.reportValidity();
+                if (!this.checkValidity()) {
+                    this.reportValidity();
                     return;
                 }
                 
@@ -2524,49 +2529,22 @@
                     return;
                 }
                 
+                // Prepare cart data for server
+                const cartDataInput = document.getElementById('cart-data');
+                cartDataInput.value = JSON.stringify(cart);
+                
                 // Show loading state
+                const payFastBtn = document.getElementById('payfast-btn');
                 const originalText = payFastBtn.innerHTML;
                 payFastBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
                 payFastBtn.disabled = true;
                 
-                // Simulate payment processing
+                // Simulate a brief delay to show processing
                 setTimeout(() => {
-                    // Show success message
-                    showNotification('Payment successful! Your order is being processed.');
-                    
-                    // Reset button
-                    payFastBtn.innerHTML = originalText;
-                    payFastBtn.disabled = false;
-                    
-                    // Process order
-                    processOrder();
-                }, 2000);
+                    // Actually submit the form
+                    checkoutForm.submit();
+                }, 1500);
             });
-        }
-        
-        // Process the order - Simulates backend order processing
-        function processOrder() {
-            // In a real application, this would send data to a backend server
-            const firstName = document.getElementById('first-name').value;
-            const email = document.getElementById('email').value;
-            
-            // Generate random order number
-            const orderNumber = `PSR-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
-            
-            // Update confirmation section
-            document.getElementById('order-number').textContent = orderNumber;
-            document.getElementById('customer-email').textContent = email;
-            
-            // Show confirmation
-            document.getElementById('confirmation').style.display = 'block';
-            document.getElementById('payment').style.display = 'none';
-            
-            // Scroll to confirmation
-            document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
-            
-            // Clear cart
-            cart = [];
-            updateCartDisplay();
         }
     </script>
 </body>
