@@ -1043,7 +1043,7 @@
             padding: 0 15px;
         }
         
-        .cart-summary, .payment-form {
+        .cart-summary {
             background: rgba(26, 44, 67, 0.7);
             border-radius: 15px;
             padding: 25px;
@@ -1053,7 +1053,7 @@
             overflow: hidden;
         }
         
-        .cart-summary::before, .payment-form::before {
+        .cart-summary::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1063,7 +1063,7 @@
             background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
         }
         
-        .cart-summary h3, .payment-form h3 {
+        .cart-summary h3 {
             font-size: 1.6rem;
             margin-bottom: 20px;
             color: var(--racing-yellow);
@@ -1166,210 +1166,97 @@
             color: var(--racing-yellow);
         }
         
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--racing-yellow);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(214, 168, 79, 0.5);
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--racing-yellow);
-            box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1);
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
-        
-        /* Address Section Styling */
-        .address-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid rgba(214, 168, 79, 0.3);
-        }
-        
-        .address-section h4 {
-            font-size: 1.4rem;
-            color: var(--racing-yellow);
-            margin-bottom: 20px;
+        /* PayFast Form Styling */
+        .payfast-form-container {
+            background: rgba(26, 44, 67, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(214, 168, 79, 0.3);
             position: relative;
-            padding-bottom: 10px;
+            overflow: hidden;
         }
         
-        .address-section h4:after {
+        .payfast-form-container::before {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--racing-red);
-            border-radius: 2px;
-        }
-        
-        .required-star {
-            color: var(--racing-red);
-            font-weight: bold;
-            margin-left: 3px;
-        }
-        
-        /* PayFast payment method */
-        .payfast-info {
-            background: rgba(26, 44, 67, 0.3);
-            border-left: 4px solid var(--racing-yellow);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 6px;
-            text-align: center;
-        }
-        
-        .payfast-info h3 {
-            color: var(--racing-yellow);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .payfast-info img {
-            max-width: 200px;
-            margin: 10px auto;
-            display: block;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-        }
-        
-        .payfast-info p {
-            color: var(--light);
-            font-size: 0.95rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        
-        /* PayFast Button */
-        .payfast-btn {
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
-            color: white;
-            font-weight: 700;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1rem;
             width: 100%;
-            margin-top: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--racing-red), var(--racing-yellow), var(--racing-red));
         }
         
-        .payfast-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(45deg, #2a5298, #1e3c72);
+        .payfast-form-container h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--racing-yellow);
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(214, 168, 79, 0.3);
         }
         
-        /* Order summary */
-        .order-summary {
-            background: rgba(26, 44, 67, 0.5);
+        .payfast-form-container form {
+            margin-top: 20px;
+        }
+        
+        .payfast-form-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .payfast-form-container td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        
+        .payfast-form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .payfast-form-container input[type="text"],
+        .payfast-form-container input[type="number"],
+        .payfast-form-container select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(214, 168, 79, 0.5);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .payfast-form-container input[type="image"] {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .payfast-form-container input[type="image"]:hover {
+            transform: scale(1.05);
+        }
+        
+        .shipping-section {
+            background: rgba(15, 28, 45, 0.5);
             border-radius: 10px;
-            padding: 15px;
+            padding: 20px;
             margin: 20px 0;
             border: 1px solid var(--racing-yellow);
         }
         
-        .order-summary h4 {
+        .shipping-section h4 {
             color: var(--racing-yellow);
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(214, 168, 79, 0.3);
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: var(--light);
-        }
-        
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(214, 168, 79, 0.3);
-            color: var(--racing-yellow);
-        }
-        
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            background: linear-gradient(45deg, var(--racing-red), var(--racing-yellow));
-            color: var(--primary-dark);
-            border-radius: 8px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            animation: slideIn 0.3s, fadeOut 0.5s 2.5s;
-        }
-        
-        /* Order confirmation */
-        .confirmation {
-            background: rgba(26, 44, 67, 0.8);
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            margin: 50px auto;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--racing-yellow);
-        }
-        
-        .confirmation h2 {
-            color: var(--racing-yellow);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .confirmation p {
-            color: var(--light);
-            font-size: 1.2rem;
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
         
-        .confirmation-number {
-            font-size: 1.8rem;
-            color: var(--racing-yellow);
-            font-weight: bold;
-            margin: 20px 0;
+        .required {
+            color: var(--racing-red);
         }
         
         /* Animations */
@@ -1391,26 +1278,6 @@
             }
             100% {
                 box-shadow: 0 0 20px var(--racing-yellow), 0 0 40px var(--racing-red);
-            }
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
             }
         }
         
@@ -1531,20 +1398,18 @@
                 gap: 20px;
             }
             
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+            .payfast-form-container table {
+                display: block;
             }
             
-            /* Video section adjustments */
-            .video-carousel {
-                max-width: 95%;
+            .payfast-form-container tr {
+                display: block;
+                margin-bottom: 15px;
             }
             
-            .video-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
+            .payfast-form-container td {
+                display: block;
+                padding: 5px 0;
             }
             
             .logo h1 {
@@ -1605,11 +1470,11 @@
                 margin: 0 auto;
             }
             
-            .cart-summary, .payment-form, .payfast-form-container {
+            .cart-summary, .payfast-form-container {
                 padding: 20px;
             }
             
-            .cart-summary h3, .payment-form h3 {
+            .cart-summary h3 {
                 font-size: 1.4rem;
             }
             
@@ -1809,129 +1674,140 @@
                     </div>
                 </div>
                 
-                <div class="payment-form">
-                    <h3>Customer Information</h3>
-                    <form id="checkout-form" method="post" action="https://www.payfast.co.za/eng/process">
-                        <!-- PayFast Required Parameters -->
+                <div class="payfast-form-container">
+                    <h3>Pay with PayFast</h3>
+                    <p>Complete your purchase securely with South Africa's leading payment gateway</p>
+                    
+                    <script type="text/javascript">
+                    function shippingRequiredPayFast (formReference) {
+                        let cont = true;
+                        for( let i = 0; i < formReference.elements.length; i++ ) {
+                            
+                            if( formReference.elements[i].className !== 'shipping' )
+                                continue;
+                            
+                            if( formReference.elements[i].name === 'line2' )
+                                continue; 
+                            if( !cont )
+                                continue;
+                            
+                            if( formReference.elements[i].name === 'country' ) {
+                                if( formReference.elements[i].selectedIndex === 0 ) {
+                                    cont = false;
+                                    alert ( 'Select a country' );
+                                }
+                            } else{
+                                if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
+                                    cont = false;
+                                    alert ( 'Complete all the mandatory address fields' );
+                                }
+                            }
+                        }
+                        if( !cont ) {
+                            return cont;
+                        }
+                    }
+                    </script>
+                    
+                    <script type="text/javascript">
+                    function customQuantitiesPayFast (formReference) {
+                        formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
+                        return true;
+                    }
+                    </script>
+                    
+                    <script type="text/javascript">
+                    function actionPayFastJavascript ( formReference ) {
+                        let shippingValid = shippingRequiredPayFast( formReference );
+                        let shippingValidOrOff = typeof shippingValid !== 'undefined' ? shippingValid : true; 
+                        let customValid = shippingValidOrOff ? customQuantitiesPayFast( formReference ) : false;
+                        
+                        if (typeof shippingValid !== 'undefined' && !shippingValid) {
+                            return false;
+                        }
+                        if (typeof customValid !== 'undefined' && !customValid) {
+                            return false;
+                        }
+                        return true;
+                    }
+                    </script>
+                    
+                    <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+                        <!-- Security Passphrase -->
+                        <input type="hidden" name="passphrase" value="064777330147618947Ts">
+                        
+                        <!-- Merchant Details -->
                         <input type="hidden" name="merchant_id" value="31098559">
                         <input type="hidden" name="merchant_key" value="ldi9hjchk0cg2">
-                        <input type="hidden" name="return_url" value="https://pinewoodspeedracer.co.za/success">
-                        <input type="hidden" name="cancel_url" value="https://pinewoodspeedracer.co.za/cancel">
-                        <input type="hidden" name="notify_url" value="https://pinewoodspeedracer.co.za/notify">
-                        <input type="hidden" name="amount" id="payfast-amount" value="0.00">
-                        <input type="hidden" name="item_name" id="payfast-item-name" value="Pinewood Speed Racer Order">
                         
-                        <!-- Cart data for server-side processing -->
-                        <input type="hidden" name="cart_data" id="cart-data">
+                        <!-- Transaction Details -->
+                        <input required type="hidden" name="cmd" value="_paynow">
+                        <input type="hidden" name="return_url" value="http://www.pinewoodspeedracer.co.za/return">
+                        <input type="hidden" name="cancel_url" value="http://www.pinewoodspeedracer.co.za/cancel">
+                        <input type="hidden" name="notify_url" value="http://www.pinewoodspeedracer.co.za/notify">
+                        <input required type="hidden" name="amount" id="payfast-amount" value="100">
+                        <input required type="hidden" name="item_name" maxlength="255" value="Pinewood Speed Racer Order">
+                        <input type="hidden" name="item_description" maxlength="255" value="Premium racing apparel and kits">
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="first-name">First Name <span class="required-star">*</span></label>
-                                <input type="text" id="first-name" name="name_first" class="form-control" placeholder="Your First Name" required>
-                            </div>
+                        <!-- Custom Quantity (Hidden) -->
+                        <input type="hidden" id="custom_quantity" name="custom_quantity" value="1">
+                        
+                        <div class="shipping-section">
+                            <h4>Shipping Address <span class="required">* Required fields</span></h4>
                             
-                            <div class="form-group">
-                                <label for="last-name">Last Name <span class="required-star">*</span></label>
-                                <input type="text" id="last-name" name="name_last" class="form-control" placeholder="Your Last Name" required>
-                            </div>
+                            <table>
+                                <tr>
+                                    <td><span class="required">*</span> Line 1</td>
+                                    <td><input type="text" name="line1" class="shipping" value="" placeholder="Street address"></td>
+                                </tr>
+                                <tr>
+                                    <td>Line 2</td>
+                                    <td><input type="text" name="line2" class="shipping" value="" placeholder="Apartment, suite, etc."></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> City</td>
+                                    <td><input type="text" class="shipping" name="city" value="" placeholder="City"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> Province</td>
+                                    <td><input type="text" class="shipping" name="region" value="" placeholder="Province"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> Country</td>
+                                    <td>
+                                        <select name="country" class="shipping">
+                                            <option value="" selected="selected">- Select Country -</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="">------------------------</option>
+                                            <option value="Botswana">Botswana</option>
+                                            <option value="Lesotho">Lesotho</option>
+                                            <option value="Mauritius">Mauritius</option>
+                                            <option value="Mozambique">Mozambique</option>
+                                            <option value="Swaziland">Swaziland</option>
+                                            <option value="Zimbabwe">Zimbabwe</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> Postal Code</td>
+                                    <td><input type="number" name="code" class="shipping" value="" placeholder="Postal code"></td>
+                                </tr>
+                            </table>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="id-number">South African ID Number <span class="required-star">*</span></label>
-                            <input type="text" id="id-number" name="custom_str1" class="form-control" placeholder="ID Number" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required-star">*</span></label>
-                            <input type="email" id="email" name="email_address" class="form-control" placeholder="your@email.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number <span class="required-star">*</span></label>
-                            <input type="tel" id="phone" name="cell_number" class="form-control" placeholder="+27 11 123 4567" required>
-                        </div>
-                        
-                        <!-- Address Section -->
-                        <div class="address-section">
-                            <h4>Shipping Address</h4>
-                            
-                            <div class="form-group">
-                                <label for="line1">Address Line 1 <span class="required-star">*</span></label>
-                                <input type="text" id="line1" name="address_line_1" class="form-control" placeholder="Street Address" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="line2">Address Line 2</label>
-                                <input type="text" id="line2" name="address_line_2" class="form-control" placeholder="Apartment, Suite, etc.">
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City <span class="required-star">*</span></label>
-                                    <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="region">Province <span class="required-star">*</span></label>
-                                    <input type="text" id="region" name="region" class="form-control" placeholder="Province" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="country">Country <span class="required-star">*</span></label>
-                                    <select id="country" name="country" class="form-control" required>
-                                        <option value="" selected disabled>Select Country</option>
-                                        <option value="South Africa">South Africa</option>
-                                        <option value="Botswana">Botswana</option>
-                                        <option value="Lesotho">Lesotho</option>
-                                        <option value="Mauritius">Mauritius</option>
-                                        <option value="Mozambique">Mozambique</option>
-                                        <option value="Swaziland">Swaziland</option>
-                                        <option value="Zimbabwe">Zimbabwe</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="code">Postal Code <span class="required-star">*</span></label>
-                                    <input type="text" id="code" name="postal_code" class="form-control" placeholder="Postal Code" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Order Summary -->
-                        <div class="order-summary">
-                            <h4>Order Summary</h4>
-                            <div class="summary-item">
-                                <span>Subtotal:</span>
-                                <span id="summary-subtotal">R 0.00</span>
-                            </div>
-                            <div class="summary-item">
-                                <span>Shipping:</span>
-                                <span>R 99.00</span>
-                            </div>
-                            <div class="summary-item">
-                                <span>Tax:</span>
-                                <span id="summary-tax">R 0.00</span>
-                            </div>
-                            <div class="summary-total">
-                                <span>Total:</span>
-                                <span id="summary-total">R 0.00</span>
-                            </div>
-                        </div>
-                        
-                        <!-- PayFast Payment Information -->
-                        <div class="payfast-info">
-                            <h3>Secure Payment via PayFast</h3>
-                            <img src="https://www.payfast.co.za/assets/logo/payfast_logo_blue.svg" alt="PayFast Secure Payments">
-                            <p>Your payment will be processed securely through PayFast, South Africa's leading payment gateway.</p>
-                        </div>
-                        
-                        <!-- PayFast Button -->
-                        <button type="submit" id="payfast-btn" class="payfast-btn">
-                            <i class="fas fa-lock"></i> PAY NOW WITH PAYFAST
-                        </button>
+                        <table>
+                            <tr>
+                                <td colspan=2 align=center>
+                                    <input type="image" src="https://my.payfast.io/images/buttons/PayNow/Dark-Large-PayNow.png" alt="Pay Now" title="Pay Now with Payfast" style="max-width: 300px;">
+                                </td>
+                            </tr>
+                        </table>
                     </form>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <img src="https://www.payfast.co.za/assets/logo/payfast_logo_blue.svg" alt="PayFast Secure Payments" style="max-width: 200px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));">
+                        <p style="color: var(--light); margin-top: 10px; font-size: 0.9rem;">Your payment is secured with 128-bit SSL encryption</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2166,9 +2042,6 @@
             // Add cart functionality
             setupCart();
             
-            // Setup form submission
-            setupFormSubmission();
-            
             // Mobile menu toggle
             const menuToggle = document.getElementById('menu-toggle');
             const navMenu = document.getElementById('nav-menu');
@@ -2189,6 +2062,9 @@
             
             // Initialize video carousel
             initVideoCarousel();
+            
+            // Set up PayFast form amount update
+            setupPayFastForm();
         });
 
         // Generate gallery items from product data
@@ -2525,7 +2401,7 @@
             if (cart.length === 0) {
                 cartItems.appendChild(emptyCart);
                 cartTotal.textContent = 'R 0.00';
-                updateOrderSummary();
+                updatePayFastAmount(0);
                 return;
             }
             
@@ -2558,23 +2434,22 @@
             // Update total
             cartTotal.textContent = `R ${total.toFixed(2)}`;
             
-            // Update order summary
-            updateOrderSummary(total);
+            // Update PayFast amount
+            updatePayFastAmount(total);
         }
         
-        // Update order summary
-        function updateOrderSummary(subtotal = 0) {
-            const shipping = 99.00;
-            const tax = subtotal * 0.15; // 15% tax
-            const total = subtotal + shipping + tax;
-            
-            document.getElementById('summary-subtotal').textContent = `R ${subtotal.toFixed(2)}`;
-            document.getElementById('summary-tax').textContent = `R ${tax.toFixed(2)}`;
-            document.getElementById('summary-total').textContent = `R ${total.toFixed(2)}`;
-            
-            // Update PayFast hidden fields
-            document.getElementById('payfast-amount').value = total.toFixed(2);
-            document.getElementById('payfast-item-name').value = `Pinewood Speed Racer Order (${cart.length} items)`;
+        // Update PayFast form amount
+        function updatePayFastAmount(amount) {
+            document.getElementById('payfast-amount').value = amount.toFixed(2);
+        }
+        
+        // Set up PayFast form
+        function setupPayFastForm() {
+            // Add event listener to update PayFast amount when cart changes
+            document.addEventListener('cartUpdated', function() {
+                const cartTotal = parseFloat(document.getElementById('cart-total').textContent.replace('R ', ''));
+                updatePayFastAmount(cartTotal);
+            });
         }
         
         // Show notification
@@ -2589,44 +2464,6 @@
             setTimeout(() => {
                 notification.remove();
             }, 3000);
-        }
-        
-        // Setup form submission for PayFast
-        function setupFormSubmission() {
-            const checkoutForm = document.getElementById('checkout-form');
-            
-            checkoutForm.addEventListener('submit', function(e) {
-                // Prevent default form submission until validation
-                e.preventDefault();
-                
-                // Validate form
-                if (!this.checkValidity()) {
-                    this.reportValidity();
-                    return;
-                }
-                
-                // Check if cart is empty
-                if (cart.length === 0) {
-                    showNotification('Your cart is empty!');
-                    return;
-                }
-                
-                // Prepare cart data for server
-                const cartDataInput = document.getElementById('cart-data');
-                cartDataInput.value = JSON.stringify(cart);
-                
-                // Show loading state
-                const payFastBtn = document.getElementById('payfast-btn');
-                const originalText = payFastBtn.innerHTML;
-                payFastBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
-                payFastBtn.disabled = true;
-                
-                // Simulate a brief delay to show processing
-                setTimeout(() => {
-                    // Actually submit the form
-                    checkoutForm.submit();
-                }, 1500);
-            });
         }
     </script>
 </body>
