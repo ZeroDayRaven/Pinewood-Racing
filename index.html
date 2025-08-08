@@ -1166,7 +1166,7 @@
             color: var(--racing-yellow);
         }
         
-        /* PayFast Form Styling */
+        /* PayFast Form Styling - Improved readability */
         .payfast-form-container {
             background: rgba(26, 44, 67, 0.7);
             border-radius: 15px;
@@ -1175,6 +1175,7 @@
             border: 1px solid rgba(214, 168, 79, 0.3);
             position: relative;
             overflow: hidden;
+            color: white; /* Ensure text is readable */
         }
         
         .payfast-form-container::before {
@@ -1195,8 +1196,23 @@
             border-bottom: 2px solid rgba(214, 168, 79, 0.3);
         }
         
-        .payfast-form-container form {
-            margin-top: 20px;
+        .buyer-section, .shipping-section {
+            background: rgba(15, 28, 45, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--racing-yellow);
+            color: white; /* Ensure text is readable */
+        }
+        
+        .buyer-section h4, .shipping-section h4 {
+            color: var(--racing-yellow);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .required {
+            color: var(--racing-red);
         }
         
         .payfast-form-container table {
@@ -1213,11 +1229,13 @@
         .payfast-form-container label {
             display: block;
             margin-bottom: 5px;
-            color: var(--light);
             font-weight: 500;
+            color: var(--light);
         }
         
         .payfast-form-container input[type="text"],
+        .payfast-form-container input[type="email"],
+        .payfast-form-container input[type="tel"],
         .payfast-form-container input[type="number"],
         .payfast-form-container select {
             width: 100%;
@@ -1241,22 +1259,23 @@
             transform: scale(1.05);
         }
         
-        .shipping-section {
-            background: rgba(15, 28, 45, 0.5);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 1px solid var(--racing-yellow);
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--racing-red);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease-out;
         }
         
-        .shipping-section h4 {
-            color: var(--racing-yellow);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .required {
-            color: var(--racing-red);
+        .notification.show {
+            transform: translateX(0);
         }
         
         /* Animations */
@@ -1678,104 +1697,71 @@
                     <h3>Pay with PayFast</h3>
                     <p>Complete your purchase securely with South Africa's leading payment gateway</p>
                     
-                    <script type="text/javascript">
-                    function shippingRequiredPayFast (formReference) {
-                        let cont = true;
-                        for( let i = 0; i < formReference.elements.length; i++ ) {
-                            
-                            if( formReference.elements[i].className !== 'shipping' )
-                                continue;
-                            
-                            if( formReference.elements[i].name === 'line2' )
-                                continue; 
-                            if( !cont )
-                                continue;
-                            
-                            if( formReference.elements[i].name === 'country' ) {
-                                if( formReference.elements[i].selectedIndex === 0 ) {
-                                    cont = false;
-                                    alert ( 'Select a country' );
-                                }
-                            } else{
-                                if( 0 === formReference.elements[i].value.length || /^\s*$/.test( formReference.elements[i].value ) ) {
-                                    cont = false;
-                                    alert ( 'Complete all the mandatory address fields' );
-                                }
-                            }
-                        }
-                        if( !cont ) {
-                            return cont;
-                        }
-                    }
-                    </script>
-                    
-                    <script type="text/javascript">
-                    function customQuantitiesPayFast (formReference) {
-                        formReference['amount'].value = formReference['amount'].value * formReference['custom_quantity'].value;
-                        return true;
-                    }
-                    </script>
-                    
-                    <script type="text/javascript">
-                    function actionPayFastJavascript ( formReference ) {
-                        let shippingValid = shippingRequiredPayFast( formReference );
-                        let shippingValidOrOff = typeof shippingValid !== 'undefined' ? shippingValid : true; 
-                        let customValid = shippingValidOrOff ? customQuantitiesPayFast( formReference ) : false;
-                        
-                        if (typeof shippingValid !== 'undefined' && !shippingValid) {
-                            return false;
-                        }
-                        if (typeof customValid !== 'undefined' && !customValid) {
-                            return false;
-                        }
-                        return true;
-                    }
-                    </script>
-                    
-                    <form onsubmit="return actionPayFastJavascript( this );" name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
-                        <!-- Security Passphrase -->
-                        <input type="hidden" name="passphrase" value="064777330147618947Ts">
-                        
+                    <form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
                         <!-- Merchant Details -->
                         <input type="hidden" name="merchant_id" value="31098559">
                         <input type="hidden" name="merchant_key" value="ldi9hjchk0cg2">
+                        <input type="hidden" name="passphrase" value="064777330147618947Ts">
+                        
+                        <!-- Added receiver field -->
+                        <input type="hidden" name="receiver" value="31098559">
                         
                         <!-- Transaction Details -->
                         <input required type="hidden" name="cmd" value="_paynow">
                         <input type="hidden" name="return_url" value="http://www.pinewoodspeedracer.co.za/return">
                         <input type="hidden" name="cancel_url" value="http://www.pinewoodspeedracer.co.za/cancel">
                         <input type="hidden" name="notify_url" value="http://www.pinewoodspeedracer.co.za/notify">
-                        <input required type="hidden" name="amount" id="payfast-amount" value="100">
-                        <input required type="hidden" name="item_name" maxlength="255" value="Pinewood Speed Racer Order">
-                        <input type="hidden" name="item_description" maxlength="255" value="Premium racing apparel and kits">
+                        <input required type="hidden" name="amount" id="payfast-amount" value="0">
+                        <input required type="hidden" name="item_name" value="Pinewood Speed Racer Order">
+                        <input type="hidden" name="item_description" value="Premium racing apparel and kits">
                         
-                        <!-- Custom Quantity (Hidden) -->
-                        <input type="hidden" id="custom_quantity" name="custom_quantity" value="1">
+                        <!-- Buyer Information -->
+                        <div class="buyer-section">
+                            <h4>Your Information <span class="required">* Required fields</span></h4>
+                            <table>
+                                <tr>
+                                    <td><span class="required">*</span> First Name</td>
+                                    <td><input type="text" name="name_first" required></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> Last Name</td>
+                                    <td><input type="text" name="name_last" required></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="required">*</span> Email</td>
+                                    <td><input type="email" name="email_address" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Cell Number</td>
+                                    <td><input type="tel" name="cell_number"></td>
+                                </tr>
+                            </table>
+                        </div>
                         
+                        <!-- Shipping Address -->
                         <div class="shipping-section">
                             <h4>Shipping Address <span class="required">* Required fields</span></h4>
-                            
                             <table>
                                 <tr>
                                     <td><span class="required">*</span> Line 1</td>
-                                    <td><input type="text" name="line1" class="shipping" value="" placeholder="Street address"></td>
+                                    <td><input type="text" name="line1" required value="" placeholder="Street address"></td>
                                 </tr>
                                 <tr>
                                     <td>Line 2</td>
-                                    <td><input type="text" name="line2" class="shipping" value="" placeholder="Apartment, suite, etc."></td>
+                                    <td><input type="text" name="line2" value="" placeholder="Apartment, suite, etc."></td>
                                 </tr>
                                 <tr>
                                     <td><span class="required">*</span> City</td>
-                                    <td><input type="text" class="shipping" name="city" value="" placeholder="City"></td>
+                                    <td><input type="text" name="city" required value="" placeholder="City"></td>
                                 </tr>
                                 <tr>
                                     <td><span class="required">*</span> Province</td>
-                                    <td><input type="text" class="shipping" name="region" value="" placeholder="Province"></td>
+                                    <td><input type="text" name="region" required value="" placeholder="Province"></td>
                                 </tr>
                                 <tr>
                                     <td><span class="required">*</span> Country</td>
                                     <td>
-                                        <select name="country" class="shipping">
+                                        <select name="country" required>
                                             <option value="" selected="selected">- Select Country -</option>
                                             <option value="South Africa">South Africa</option>
                                             <option value="">------------------------</option>
@@ -1790,7 +1776,7 @@
                                 </tr>
                                 <tr>
                                     <td><span class="required">*</span> Postal Code</td>
-                                    <td><input type="number" name="code" class="shipping" value="" placeholder="Postal code"></td>
+                                    <td><input type="number" name="code" required value="" placeholder="Postal code"></td>
                                 </tr>
                             </table>
                         </div>
@@ -2062,9 +2048,6 @@
             
             // Initialize video carousel
             initVideoCarousel();
-            
-            // Set up PayFast form amount update
-            setupPayFastForm();
         });
 
         // Generate gallery items from product data
@@ -2443,15 +2426,6 @@
             document.getElementById('payfast-amount').value = amount.toFixed(2);
         }
         
-        // Set up PayFast form
-        function setupPayFastForm() {
-            // Add event listener to update PayFast amount when cart changes
-            document.addEventListener('cartUpdated', function() {
-                const cartTotal = parseFloat(document.getElementById('cart-total').textContent.replace('R ', ''));
-                updatePayFastAmount(cartTotal);
-            });
-        }
-        
         // Show notification
         function showNotification(message) {
             const notification = document.createElement('div');
@@ -2460,9 +2434,17 @@
             
             document.body.appendChild(notification);
             
+            // Add show class
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
             // Remove notification after animation
             setTimeout(() => {
-                notification.remove();
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
             }, 3000);
         }
     </script>
