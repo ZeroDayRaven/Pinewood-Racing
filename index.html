@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Structured Data for Logo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://www.pinewoodspeedracer.co.za",
+      "logo": "https://www.pinewoodspeedracer.co.za/images/Main%20Logo.png",
+      "name": "Pinewood Speed Racer",
+      "description": "Premium racing apparel and kits for Pinewood Derby enthusiasts",
+      "sameAs": [
+        "https://www.facebook.com/pinewoodspeedracer",
+        "https://www.instagram.com/pinewoodspeedracer"
+      ]
+    }
+    </script>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FT0PPLK5Y"></script>
     <script>
@@ -1784,238 +1800,240 @@
         // Using provided images from the images folder
         
         // Product data with images
-        const products = [
-            { 
-                id: 1,
-                name: "(PSR)Black Dotty Shirt", 
-                price: 345, 
-                image: "images/black_dotty_shirt_1_R345.jpeg", 
-                category: "tshirts",
-                description: "Stylish black dotty shirt for racing enthusiasts"
-            },
-            { 
-                id: 2,
-                name: "(MNR.Brannas)Black Hoody", 
-                price: 800, 
-                image: "images/blackhoody1.jpeg", 
-                category: "hoodies",
-                description: "Comfortable and warm black hoody for race days"
-            },
-            { 
-                id: 3,
-                name: "(PSR)Black T-Shirt 1", 
-                price: 360, 
-                image: "images/black_tshirt_1_R360.jpeg", 
-                category: "tshirts",
-                description: "Classic black t-shirt with racing logo"
-            },
-            { 
-                id: 4,
-                name: "(PSR)Black T-Shirt 2", 
-                price: 380, 
-                image: "images/black_tshirt_2_R380.jpeg", 
-                category: "tshirts",
-                description: "Performance black t-shirt for racing champions"
-            },
-            { 
-                id: 5,
-                name: "(PSR)Black T-Shirt 3", 
-                price: 325, 
-                image: "images/black_tshirt_3_R325.jpeg", 
-                category: "tshirts",
-                description: "Lightweight black t-shirt with speed design"
-            },
-            { 
-                id: 6,
-                name: "(PSR)Black T-Shirt 4", 
-                price: 350, 
-                image: "images/black_tshirt_4_R350.jpeg", 
-                category: "tshirts",
-                description: "Sleek black t-shirt with minimalist racing design"
-            },
-            { 
-                id: 7,
-                name: "(PSR)Black T-Shirt 5", 
-                price: 345, 
-                image: "images/black_tshirt_5_R345.jpeg", 
-                category: "tshirts",
-                description: "Performance fabric black t-shirt for racers"
-            },
-            { 
-                id: 8,
-                name: "(PSR)Black T-Shirt 7", 
-                price: 345, 
-                image: "images/black_tshirt_7_R345.jpeg", 
-                category: "tshirts",
-                description: "Premium black t-shirt with exclusive design"
-            },
-            { 
-                id: 9,
-                name: "(PSR)Brown Button Down Shirt", 
-                price: 600, 
-                image: "images/brown_button_down_shirt_R600.jpeg", 
-                category: "tshirts",
-                description: "Stylish brown button-down shirt for racing events"
-            },
-            { 
-                id: 10,
-                name: "(PSR)Brown Hoody", 
-                price: 1100, 
-                image: "images/brown_hoody_1_R1100.jpeg", 
-                category: "hoodies",
-                description: "Warm brown hoody with racing team branding"
-            },
-            { 
-                id: 11,
-                name: "(PSR)Brown Shorts", 
-                price: 600, 
-                image: "images/brown_shorts_R600.jpeg", 
-                category: "shorts",
-                description: "Comfortable brown shorts for track days"
-            },
-            { 
-                id: 12,
-                name: "(MNR.Brannas)Brown T-Shirt", 
-                price: 380, 
-                image: "images/brown_tshirt_1_R380.jpeg", 
-                category: "tshirts",
-                description: "Classic brown t-shirt with speed emblem"
-            },
-            { 
-                id: 13,
-                name: "(PSR)Cap", 
-                price: 250, 
-                image: "images/cap1.jpeg", 
-                category: "caps",
-                description: "Premium racing cap with embroidered logo"
-            },
-            { 
-                id: 14,
-                name: "(MNR.Brannas)Cap", 
-                price: 250, 
-                image: "images/cap2.jpeg", 
-                category: "caps",
-                description: "Performance racing cap with adjustable fit"
-            },
-            { 
-                id: 15,
-                name: "Racing kit package 1", 
-                price: 1000, 
-                image: "images/Kit1.jpeg", 
-                category: "kit",
-                description: "Essential racing kit for beginners"
-            },
-            { 
-                id: 16,
-                name: "Racing kit package 2", 
-                price: 2500, 
-                image: "images/Kit2.jpeg", 
-                category: "kit",
-                description: "Advanced racing kit for serious competitors"
-            },
-            { 
-                id: 17,
-                name: "Racing kit package 3", 
-                price: 4000, 
-                image: "images/Kit3.jpeg", 
-                category: "kit",
-                description: "Professional racing kit for champions"
-            },
-            { 
-                id: 18,
-                name: "(MNR.Brannas)Mix Color T-Shirt", 
-                price: 345, 
-                image: "images/mix_color_tshirt_R345.jpeg", 
-                category: "tshirts",
-                description: "Vibrant mixed color racing t-shirt"
-            },
-            { 
-                id: 19,
-                name: "(PSR)Sticker", 
-                price: 30, 
-                image: "images/sticker 1 R30.jpeg", 
-                category: "accessories",
-                description: "Decorative racing sticker for personalization"
-            },
-            { 
-                id: 20,
-                name: "(PSR)Track Shirt", 
-                price: 450, 
-                image: "images/Track Shirt R450.jpeg", 
-                category: "tshirts",
-                description: "Performance track shirt for racing events"
-            },
-            { 
-                id: 21,
-                name: "(MNR.Brannas)White Hoody", 
-                price: 1100, 
-                image: "images/white_hoody_R1100.jpeg", 
-                category: "hoodies",
-                description: "Premium white hoody with racing graphics"
-            },
-            { 
-                id: 22,
-                name: "(PSR)White T-Shirt 1", 
-                price: 350, 
-                image: "images/white_tshirt_1_R350.jpeg", 
-                category: "tshirts",
-                description: "Classic white t-shirt with racing logo"
-            },
-            { 
-                id: 23,
-                name: "(PSR)White T-Shirt 2", 
-                price: 325, 
-                image: "images/white_tshirt_2_R325.jpeg", 
-                category: "tshirts",
-                description: "Performance white t-shirt for track days"
-            },
-            { 
-                id: 24,
-                name: "(PSR)White T-Shirt 3", 
-                price: 345, 
-                image: "images/white_tshirt_3_R345.jpeg", 
-                category: "tshirts",
-                description: "Sleek white t-shirt with minimalist design"
-            },
-            { 
-                id: 25,
-                name: "(PSR)White T-Shirt 4", 
-                price: 345, 
-                image: "images/white_tshirt_4_R345.jpeg", 
-                category: "tshirts",
-                description: "Premium white t-shirt with racing emblem"
-            },
-            { 
-                id: 26,
-                name: "(PSR)White T-Shirt 5", 
-                price: 325, 
-                image: "images/white_tshirt_5_R325.jpeg", 
-                category: "tshirts",
-                description: "Lightweight white t-shirt for racing"
-            },
-            { 
-                id: 27,
-                name: "(PSR)White T-Shirt 6", 
-                price: 325, 
-                image: "images/white_tshirt_6.jpeg", 
-                category: "tshirts",
-                description: "Performance white t-shirt with speed design"
-            }
-        ];
-        
-        // Hero image paths
-        const heroImages = [
-            "images/Hero1.jpeg",
-            "images/Hero2.jpeg",
-            "images/Hero3.jpeg"
-        ];
-        
-        // Video data
-        const racingVideos = [
-            { id: "Pinewood1", title: "Pinewood Racing Highlights #1", src: "images/Pinewood1.mp4" },
-            { id: "Pinewood2", title: "Pinewood Racing Highlights #2", src: "images/Pinewood2.mp4" },
-            { id: "Pinewood3", title: "Pinewood Racing Highlights #3", src: "images/Pinewood3.mp4" }
-        ];
+       const products = [
+    // Racing kits first
+    { 
+        id: 15,
+        name: "Racing kit package 1", 
+        price: 1000, 
+        image: "images/Kit1.jpeg", 
+        category: "kit",
+        description: "Essential racing kit for beginners"
+    },
+    { 
+        id: 16,
+        name: "Racing kit package 2", 
+        price: 2500, 
+        image: "images/Kit2.jpeg", 
+        category: "kit",
+        description: "Advanced racing kit for serious competitors"
+    },
+    { 
+        id: 17,
+        name: "Racing kit package 3", 
+        price: 4000, 
+        image: "images/Kit3.jpeg", 
+        category: "kit",
+        description: "Professional racing kit for champions"
+    },
+    // Rest of the products
+    { 
+        id: 1,
+        name: "(PSR)Black Dotty Shirt", 
+        price: 345, 
+        image: "images/black_dotty_shirt_1_R345.jpeg", 
+        category: "tshirts",
+        description: "Stylish black dotty shirt for racing enthusiasts"
+    },
+    { 
+        id: 2,
+        name: "(MNR.Brannas)Black Hoody", 
+        price: 800, 
+        image: "images/blackhoody1.jpeg", 
+        category: "hoodies",
+        description: "Comfortable and warm black hoody for race days"
+    },
+    { 
+        id: 3,
+        name: "(PSR)Black T-Shirt 1", 
+        price: 360, 
+        image: "images/black_tshirt_1_R360.jpeg", 
+        category: "tshirts",
+        description: "Classic black t-shirt with racing logo"
+    },
+    { 
+        id: 4,
+        name: "(PSR)Black T-Shirt 2", 
+        price: 380, 
+        image: "images/black_tshirt_2_R380.jpeg", 
+        category: "tshirts",
+        description: "Performance black t-shirt for racing champions"
+    },
+    { 
+        id: 5,
+        name: "(PSR)Black T-Shirt 3", 
+        price: 325, 
+        image: "images/black_tshirt_3_R325.jpeg", 
+        category: "tshirts",
+        description: "Lightweight black t-shirt with speed design"
+    },
+    { 
+        id: 6,
+        name: "(PSR)Black T-Shirt 4", 
+        price: 350, 
+        image: "images/black_tshirt_4_R350.jpeg", 
+        category: "tshirts",
+        description: "Sleek black t-shirt with minimalist racing design"
+    },
+    { 
+        id: 7,
+        name: "(PSR)Black T-Shirt 5", 
+        price: 345, 
+        image: "images/black_tshirt_5_R345.jpeg", 
+        category: "tshirts",
+        description: "Performance fabric black t-shirt for racers"
+    },
+    { 
+        id: 8,
+        name: "(PSR)Black T-Shirt 7", 
+        price: 345, 
+        image: "images/black_tshirt_7_R345.jpeg", 
+        category: "tshirts",
+        description: "Premium black t-shirt with exclusive design"
+    },
+    { 
+        id: 9,
+        name: "(PSR)Brown Button Down Shirt", 
+        price: 600, 
+        image: "images/brown_button_down_shirt_R600.jpeg", 
+        category: "tshirts",
+        description: "Stylish brown button-down shirt for racing events"
+    },
+    { 
+        id: 10,
+        name: "(PSR)Brown Hoody", 
+        price: 1100, 
+        image: "images/brown_hoody_1_R1100.jpeg", 
+        category: "hoodies",
+        description: "Warm brown hoody with racing team branding"
+    },
+    { 
+        id: 11,
+        name: "(PSR)Brown Shorts", 
+        price: 600, 
+        image: "images/brown_shorts_R600.jpeg", 
+        category: "shorts",
+        description: "Comfortable brown shorts for track days"
+    },
+    { 
+        id: 12,
+        name: "(MNR.Brannas)Brown T-Shirt", 
+        price: 380, 
+        image: "images/brown_tshirt_1_R380.jpeg", 
+        category: "tshirts",
+        description: "Classic brown t-shirt with speed emblem"
+    },
+    { 
+        id: 13,
+        name: "(PSR)Cap", 
+        price: 250, 
+        image: "images/cap1.jpeg", 
+        category: "caps",
+        description: "Premium racing cap with embroidered logo"
+    },
+    { 
+        id: 14,
+        name: "(MNR.Brannas)Cap", 
+        price: 250, 
+        image: "images/cap2.jpeg", 
+        category: "caps",
+        description: "Performance racing cap with adjustable fit"
+    },
+    { 
+        id: 18,
+        name: "(MNR.Brannas)Mix Color T-Shirt", 
+        price: 345, 
+        image: "images/mix_color_tshirt_R345.jpeg", 
+        category: "tshirts",
+        description: "Vibrant mixed color racing t-shirt"
+    },
+    { 
+        id: 19,
+        name: "(PSR)Sticker", 
+        price: 30, 
+        image: "images/sticker 1 R30.jpeg", 
+        category: "accessories",
+        description: "Decorative racing sticker for personalization"
+    },
+    { 
+        id: 20,
+        name: "(PSR)Track Shirt", 
+        price: 450, 
+        image: "images/Track Shirt R450.jpeg", 
+        category: "tshirts",
+        description: "Performance track shirt for racing events"
+    },
+    { 
+        id: 21,
+        name: "(MNR.Brannas)White Hoody", 
+        price: 1100, 
+        image: "images/white_hoody_R1100.jpeg", 
+        category: "hoodies",
+        description: "Premium white hoody with racing graphics"
+    },
+    { 
+        id: 22,
+        name: "(PSR)White T-Shirt 1", 
+        price: 350, 
+        image: "images/white_tshirt_1_R350.jpeg", 
+        category: "tshirts",
+        description: "Classic white t-shirt with racing logo"
+    },
+    { 
+        id: 23,
+        name: "(PSR)White T-Shirt 2", 
+        price: 325, 
+        image: "images/white_tshirt_2_R325.jpeg", 
+        category: "tshirts",
+        description: "Performance white t-shirt for track days"
+    },
+    { 
+        id: 24,
+        name: "(PSR)White T-Shirt 3", 
+        price: 345, 
+        image: "images/white_tshirt_3_R345.jpeg", 
+        category: "tshirts",
+        description: "Sleek white t-shirt with minimalist design"
+    },
+    { 
+        id: 25,
+        name: "(PSR)White T-Shirt 4", 
+        price: 345, 
+        image: "images/white_tshirt_4_R345.jpeg", 
+        category: "tshirts",
+        description: "Premium white t-shirt with racing emblem"
+    },
+    { 
+        id: 26,
+        name: "(PSR)White T-Shirt 5", 
+        price: 325, 
+        image: "images/white_tshirt_5_R325.jpeg", 
+        category: "tshirts",
+        description: "Lightweight white t-shirt for racing"
+    },
+    { 
+        id: 27,
+        name: "(PSR)White T-Shirt 6", 
+        price: 325, 
+        image: "images/white_tshirt_6.jpeg", 
+        category: "tshirts",
+        description: "Performance white t-shirt with speed design"
+    }
+];
+
+// Hero image paths
+const heroImages = [
+    "images/Hero1.jpeg",
+    "images/Hero2.jpeg",
+    "images/Hero3.jpeg"
+];
+
+// Video data
+const racingVideos = [
+    { id: "Pinewood1", title: "Pinewood Racing Highlights #1", src: "images/Pinewood1.mp4" },
+    { id: "Pinewood2", title: "Pinewood Racing Highlights #2", src: "images/Pinewood2.mp4" },
+    { id: "Pinewood3", title: "Pinewood Racing Highlights #3", src: "images/Pinewood3.mp4" }
+];
 
         // Cart array to store items
         let cart = JSON.parse(localStorage.getItem('pinewoodCart')) || [];
