@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FT0PPLK5Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3FT0PPLK5Y');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinewood Speed Racer - Premium Racing Apparel & Kits</title>
+    <meta name="description" content="Premium racing apparel and kits for champions. High-quality merchandise for Pinewood Derby enthusiasts.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -82,11 +92,11 @@
             gap: 15px;
         }
         
-        /* Updated Animated Logo Container */
+        /* Enhanced Animated Logo Container */
         .logo-container {
             position: relative;
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             overflow: visible;
             z-index: 10;
@@ -98,8 +108,8 @@
             height: 100%;
             background: #0f1c2d;
             border-radius: 50%;
-            border: 2px solid var(--racing-yellow);
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            border: 3px solid var(--racing-yellow);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -109,8 +119,8 @@
         }
         
         .logo-img {
-            width: 70%;
-            height: 70%;
+            width: 70px;
+            height: 70px;
             background-image: url('images/Logo.png');
             background-size: contain;
             background-position: center;
@@ -118,7 +128,7 @@
             z-index: 3;
         }
         
-        /* Racing orbs */
+        /* Racing orbs - orbiting in a circle */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -126,35 +136,34 @@
             filter: drop-shadow(0 0 4px rgba(0,0,0,0.8));
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            width: 14px;
+            height: 14px;
         }
         
         .red-orb {
-            width: 14px;
-            height: 14px;
             background: radial-gradient(circle at 30% 30%, #ff4d4d, #cc0000);
-            top: -7px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             animation: orbit 3s infinite linear;
         }
         
         .blue-orb {
-            width: 14px;
-            height: 14px;
             background: radial-gradient(circle at 30% 30%, #66b3ff, #0066cc);
-            bottom: -7px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             animation: orbit 4s infinite linear reverse;
+            animation-delay: -1.5s;
         }
         
-        /* Orb animation */
+        /* Orb animation - circular orbit */
         @keyframes orbit {
             0% {
-                transform: translateX(-50%) rotate(0deg) translateY(35px) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg) translate(45px) rotate(0deg);
             }
             100% {
-                transform: translateX(-50%) rotate(360deg) translateY(35px) rotate(-360deg);
+                transform: translate(-50%, -50%) rotate(360deg) translate(45px) rotate(-360deg);
             }
         }
         
@@ -230,36 +239,7 @@
             z-index: 1;
         }
         
-        .btn-primary {
-            background: var(--secondary);
-            color: white;
-            border: 2px solid var(--secondary);
-        }
-        
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(194, 37, 43, 0.3);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid var(--accent);
-        }
-        
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .btn-sm {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-        }
-        
+        /* Rest of the CSS remains the same as before */
         /* Hero Section with Carousel - Racing Style */
         .hero {
             position: relative;
@@ -1436,8 +1416,8 @@
             }
             
             .logo-container {
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
             }
             
             .red-orb, .blue-orb {
@@ -1447,10 +1427,10 @@
             
             @keyframes orbit {
                 0% {
-                    transform: translateX(-50%) rotate(0deg) translateY(30px) rotate(0deg);
+                    transform: translate(-50%, -50%) rotate(0deg) translate(35px) rotate(0deg);
                 }
                 100% {
-                    transform: translateX(-50%) rotate(360deg) translateY(30px) rotate(-360deg);
+                    transform: translate(-50%, -50%) rotate(360deg) translate(35px) rotate(-360deg);
                 }
             }
         }
@@ -1516,8 +1496,8 @@
             }
             
             .logo-container {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
             }
             
             .red-orb, .blue-orb {
@@ -1527,10 +1507,10 @@
             
             @keyframes orbit {
                 0% {
-                    transform: translateX(-50%) rotate(0deg) translateY(25px) rotate(0deg);
+                    transform: translate(-50%, -50%) rotate(0deg) translate(30px) rotate(0deg);
                 }
                 100% {
-                    transform: translateX(-50%) rotate(360deg) translateY(25px) rotate(-360deg);
+                    transform: translate(-50%, -50%) rotate(360deg) translate(30px) rotate(-360deg);
                 }
             }
         }
@@ -1553,8 +1533,8 @@
             }
             
             .logo-container {
-                width: 45px;
-                height: 45px;
+                width: 55px;
+                height: 55px;
             }
         }
     </style>
@@ -1564,10 +1544,10 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <!-- Animated Logo Container -->
+                <!-- Enhanced Animated Logo Container -->
                 <div class="logo-container">
                     <div class="logo-bg">
-                        <div class="logo-img"></div>
+                        <div class="logo-img" role="img" aria-label="Pinewood Speed Racer Logo"></div>
                     </div>
                     <div class="orb red-orb"></div>
                     <div class="orb blue-orb"></div>
@@ -1575,7 +1555,7 @@
                 <h1>Pinewood Speed Racer</h1>
             </div>
             
-            <button class="menu-toggle" id="menu-toggle">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </button>
             
@@ -1599,10 +1579,10 @@
         <div class="hero-indicators">
             <!-- Indicators will be populated by JavaScript -->
         </div>
-        <div class="hero-nav hero-prev">
+        <div class="hero-nav hero-prev" aria-label="Previous slide">
             <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="hero-nav hero-next">
+        <div class="hero-nav hero-next" aria-label="Next slide">
             <i class="fas fa-chevron-right"></i>
         </div>
         <div class="container hero-content">
@@ -1633,10 +1613,10 @@
                 <div class="video-indicators">
                     <!-- Indicators will be added by JavaScript -->
                 </div>
-                <div class="video-nav video-prev">
+                <div class="video-nav video-prev" aria-label="Previous video">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                <div class="video-nav video-next">
+                <div class="video-nav video-next" aria-label="Next video">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
@@ -1807,192 +1787,219 @@
         const products = [
             { 
                 id: 1,
-                name: "Black Dotty Shirt", 
+                name: "(PSR)Black Dotty Shirt", 
                 price: 345, 
                 image: "images/black_dotty_shirt_1_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Stylish black dotty shirt for racing enthusiasts"
             },
             { 
                 id: 2,
-                name: "Black Hoody", 
+                name: "(MNR.Brannas)Black Hoody", 
                 price: 800, 
                 image: "images/blackhoody1.jpeg", 
-                category: "hoodies" 
+                category: "hoodies",
+                description: "Comfortable and warm black hoody for race days"
             },
             { 
                 id: 3,
-                name: "Black T-Shirt 1", 
+                name: "(PSR)Black T-Shirt 1", 
                 price: 360, 
                 image: "images/black_tshirt_1_R360.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Classic black t-shirt with racing logo"
             },
             { 
                 id: 4,
-                name: "Black T-Shirt 2", 
+                name: "(PSR)Black T-Shirt 2", 
                 price: 380, 
                 image: "images/black_tshirt_2_R380.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Performance black t-shirt for racing champions"
             },
             { 
                 id: 5,
-                name: "Black T-Shirt 3", 
+                name: "(PSR)Black T-Shirt 3", 
                 price: 325, 
                 image: "images/black_tshirt_3_R325.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Lightweight black t-shirt with speed design"
             },
             { 
                 id: 6,
-                name: "Black T-Shirt 4", 
+                name: "(PSR)Black T-Shirt 4", 
                 price: 350, 
                 image: "images/black_tshirt_4_R350.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Sleek black t-shirt with minimalist racing design"
             },
             { 
                 id: 7,
-                name: "Black T-Shirt 5", 
+                name: "(PSR)Black T-Shirt 5", 
                 price: 345, 
                 image: "images/black_tshirt_5_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Performance fabric black t-shirt for racers"
             },
             { 
                 id: 8,
-                name: "Black T-Shirt 7", 
+                name: "(PSR)Black T-Shirt 7", 
                 price: 345, 
                 image: "images/black_tshirt_7_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Premium black t-shirt with exclusive design"
             },
             { 
                 id: 9,
-                name: "Brown Button Down Shirt", 
+                name: "(PSR)Brown Button Down Shirt", 
                 price: 600, 
                 image: "images/brown_button_down_shirt_R600.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Stylish brown button-down shirt for racing events"
             },
             { 
                 id: 10,
-                name: "Brown Hoody", 
+                name: "(PSR)Brown Hoody", 
                 price: 1100, 
                 image: "images/brown_hoody_1_R1100.jpeg", 
-                category: "hoodies" 
+                category: "hoodies",
+                description: "Warm brown hoody with racing team branding"
             },
             { 
                 id: 11,
-                name: "Brown Shorts", 
+                name: "(PSR)Brown Shorts", 
                 price: 600, 
                 image: "images/brown_shorts_R600.jpeg", 
-                category: "shorts" 
+                category: "shorts",
+                description: "Comfortable brown shorts for track days"
             },
             { 
                 id: 12,
-                name: "Brown T-Shirt", 
+                name: "(MNR.Brannas)Brown T-Shirt", 
                 price: 380, 
                 image: "images/brown_tshirt_1_R380.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Classic brown t-shirt with speed emblem"
             },
             { 
                 id: 13,
-                name: "Cap 1", 
+                name: "(PSR)Cap", 
                 price: 250, 
                 image: "images/cap1.jpeg", 
-                category: "caps" 
+                category: "caps",
+                description: "Premium racing cap with embroidered logo"
             },
             { 
                 id: 14,
-                name: "Cap 2", 
+                name: "(MNR.Brannas)Cap", 
                 price: 250, 
                 image: "images/cap2.jpeg", 
-                category: "caps" 
+                category: "caps",
+                description: "Performance racing cap with adjustable fit"
             },
             { 
                 id: 15,
-                name: "Kit 1", 
+                name: "Racing kit package 1", 
                 price: 1000, 
                 image: "images/Kit1.jpeg", 
-                category: "kit" 
+                category: "kit",
+                description: "Essential racing kit for beginners"
             },
             { 
                 id: 16,
-                name: "Kit 2", 
+                name: "Racing kit package 2", 
                 price: 2500, 
                 image: "images/Kit2.jpeg", 
-                category: "kit" 
+                category: "kit",
+                description: "Advanced racing kit for serious competitors"
             },
             { 
                 id: 17,
-                name: "Kit 3", 
+                name: "Racing kit package 3", 
                 price: 4000, 
                 image: "images/Kit3.jpeg", 
-                category: "kit" 
+                category: "kit",
+                description: "Professional racing kit for champions"
             },
             { 
                 id: 18,
-                name: "Mix Color T-Shirt", 
+                name: "(MNR.Brannas)Mix Color T-Shirt", 
                 price: 345, 
                 image: "images/mix_color_tshirt_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Vibrant mixed color racing t-shirt"
             },
             { 
                 id: 19,
-                name: "Sticker", 
+                name: "(PSR)Sticker", 
                 price: 30, 
                 image: "images/sticker 1 R30.jpeg", 
-                category: "accessories" 
+                category: "accessories",
+                description: "Decorative racing sticker for personalization"
             },
             { 
                 id: 20,
-                name: "Track Shirt", 
+                name: "(PSR)Track Shirt", 
                 price: 450, 
-                image: "images/track2.jpeg", 
-                category: "tshirts" 
+                image: "images/Track Shirt R450.jpeg", 
+                category: "tshirts",
+                description: "Performance track shirt for racing events"
             },
             { 
                 id: 21,
-                name: "White Hoody", 
+                name: "(MNR.Brannas)White Hoody", 
                 price: 1100, 
                 image: "images/white_hoody_R1100.jpeg", 
-                category: "hoodies" 
+                category: "hoodies",
+                description: "Premium white hoody with racing graphics"
             },
             { 
                 id: 22,
-                name: "White T-Shirt 1", 
+                name: "(PSR)White T-Shirt 1", 
                 price: 350, 
                 image: "images/white_tshirt_1_R350.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Classic white t-shirt with racing logo"
             },
             { 
                 id: 23,
-                name: "White T-Shirt 2", 
+                name: "(PSR)White T-Shirt 2", 
                 price: 325, 
                 image: "images/white_tshirt_2_R325.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Performance white t-shirt for track days"
             },
             { 
                 id: 24,
-                name: "White T-Shirt 3", 
+                name: "(PSR)White T-Shirt 3", 
                 price: 345, 
                 image: "images/white_tshirt_3_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Sleek white t-shirt with minimalist design"
             },
             { 
                 id: 25,
-                name: "White T-Shirt 4", 
+                name: "(PSR)White T-Shirt 4", 
                 price: 345, 
                 image: "images/white_tshirt_4_R345.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Premium white t-shirt with racing emblem"
             },
             { 
                 id: 26,
-                name: "White T-Shirt 5", 
+                name: "(PSR)White T-Shirt 5", 
                 price: 325, 
                 image: "images/white_tshirt_5_R325.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Lightweight white t-shirt for racing"
             },
             { 
                 id: 27,
-                name: "White T-Shirt 6", 
+                name: "(PSR)White T-Shirt 6", 
                 price: 325, 
                 image: "images/white_tshirt_6.jpeg", 
-                category: "tshirts" 
+                category: "tshirts",
+                description: "Performance white t-shirt with speed design"
             }
         ];
         
@@ -2011,7 +2018,7 @@
         ];
 
         // Cart array to store items
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('pinewoodCart')) || [];
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -2027,6 +2034,9 @@
             
             // Add cart functionality
             setupCart();
+            
+            // Update cart display
+            updateCartDisplay();
             
             // Mobile menu toggle
             const menuToggle = document.getElementById('menu-toggle');
@@ -2089,15 +2099,15 @@
                 // Add product content
                 const itemContent = document.createElement('div');
                 itemContent.innerHTML = `
-                    <div class="gallery-img" style="background-image: url('${product.image}')"></div>
+                    <div class="gallery-img" style="background-image: url('${product.image}')" role="img" aria-label="${product.name}"></div>
                     <div class="gallery-info">
                         <h3>${product.name}</h3>
                         <div class="gallery-price">R ${product.price.toFixed(2)}</div>
-                        <p class="gallery-desc">${product.category === 'kit' ? 'Premium racing kit for champions' : 'High-quality racing apparel for enthusiasts and professionals'}</p>
+                        <p class="gallery-desc">${product.description}</p>
                         ${product.category === 'tshirts' || product.category === 'hoodies' || product.category === 'shorts' ? `
                         <div class="size-selector">
-                            <label for="size">Size:</label>
-                            <select class="size-select">
+                            <label for="size-${product.id}">Size:</label>
+                            <select class="size-select" id="size-${product.id}">
                                 <option value="S">Small (S)</option>
                                 <option value="M" selected>Medium (M)</option>
                                 <option value="L">Large (L)</option>
@@ -2106,9 +2116,9 @@
                         </div>
                         ` : ''}
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1">
-                            <button class="quantity-btn plus">+</button>
+                            <button class="quantity-btn minus" aria-label="Decrease quantity">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" aria-label="Quantity">
+                            <button class="quantity-btn plus" aria-label="Increase quantity">+</button>
                         </div>
                         <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
                     </div>
@@ -2170,12 +2180,15 @@
                 const slide = document.createElement('div');
                 slide.className = 'hero-slide';
                 slide.style.backgroundImage = `url('${image}')`;
+                slide.setAttribute('role', 'img');
+                slide.setAttribute('aria-label', `Pinewood Speed Racer promotional image ${index + 1}`);
                 if (index === 0) slide.classList.add('active');
                 heroSlides.appendChild(slide);
                 
                 // Create indicator
                 const indicator = document.createElement('div');
                 indicator.className = 'hero-indicator';
+                indicator.setAttribute('aria-label', `Slide ${index + 1}`);
                 if (index === 0) indicator.classList.add('active');
                 indicator.addEventListener('click', () => {
                     setActiveSlide(index);
@@ -2243,6 +2256,7 @@
                 // Create video slide
                 const slide = document.createElement('div');
                 slide.className = 'video-slide';
+                slide.setAttribute('aria-label', video.title);
                 if (index === 0) slide.classList.add('active');
                 
                 const videoElement = document.createElement('video');
@@ -2251,6 +2265,7 @@
                 videoElement.muted = true;
                 videoElement.autoplay = false;
                 videoElement.playsInline = true;
+                videoElement.setAttribute('title', video.title);
                 
                 slide.appendChild(videoElement);
                 videoSlides.appendChild(slide);
@@ -2258,6 +2273,7 @@
                 // Create indicator
                 const indicator = document.createElement('div');
                 indicator.className = 'video-indicator';
+                indicator.setAttribute('aria-label', `Video ${index + 1}: ${video.title}`);
                 if (index === 0) indicator.classList.add('active');
                 indicator.addEventListener('click', () => {
                     setActiveVideo(index);
@@ -2362,6 +2378,9 @@
                 });
             }
             
+            // Save to localStorage
+            localStorage.setItem('pinewoodCart', JSON.stringify(cart));
+            
             // Update cart display
             updateCartDisplay();
         }
@@ -2369,6 +2388,8 @@
         // Remove item from cart
         function removeFromCart(index) {
             cart.splice(index, 1);
+            // Save to localStorage
+            localStorage.setItem('pinewoodCart', JSON.stringify(cart));
             updateCartDisplay();
         }
         
@@ -2401,14 +2422,14 @@
                 total += itemTotal;
                 
                 cartItem.innerHTML = `
-                    <div class="cart-item-img" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-img" style="background-image: url('${item.image}')" role="img" aria-label="${item.name}"></div>
                     <div class="cart-item-details">
                         <h4>${item.name}</h4>
                         <div class="cart-item-price">R ${item.price.toFixed(2)}</div>
                         <div class="cart-item-quantity">Qty: ${item.quantity}</div>
                         ${item.size !== 'N/A' ? `<div class="cart-item-size">Size: ${item.size}</div>` : ''}
                     </div>
-                    <button class="remove-btn"><i class="fas fa-times"></i></button>
+                    <button class="remove-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
                 `;
                 
                 cartItems.appendChild(cartItem);
